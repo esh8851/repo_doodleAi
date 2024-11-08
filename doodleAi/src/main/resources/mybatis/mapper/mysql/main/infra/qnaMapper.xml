@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.tele.infra.qna.QnaDao">
+<!-- namespace :  mapper와 연결될 dao -->
+<!-- xml에서 주석 단축키 : Ctrl + Shift + C -->
+
+	<resultMap type="com.tele.infra.qna.QnaDto" id="resultMapObj"></resultMap>
+	
+</mapper>

@@ -1,8 +1,8 @@
-package com.tele.infra.act;
+package com.tele.infra.member;
 
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ActDao {
+public interface MemberDao {
 
 }

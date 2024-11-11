@@ -10,9 +10,14 @@ public class LoginController {
 	@Autowired
 	LoginService loginService;
 	
-	@RequestMapping(value="/v1/infra/login/loginUsrSignin")
-	public String loginUsrSignin() {
-		return "/usr/v1/infra/login/loginUsrSignin";
+	@RequestMapping(value="/v1/infra/login/loginUsrSignIn")
+	public String loginUsrSignIn() {
+		return "/usr/v1/infra/login/loginUsrSignIn";
+	}
+	
+	@RequestMapping(value="/v1/infra/login/loginUsrSignUp")
+	public String loginUsrSignUp() {
+		return "/usr/v1/infra/login/loginUsrSignUp";
 	}
 
 }

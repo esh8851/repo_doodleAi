@@ -16,7 +16,7 @@
 	<main id="main" class="main">
 
 		<div class="pagetitle">
-			<h1>다이어리</h1>
+			<h1>일기 쓰기</h1>
 			<nav>
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item"><a href="index.html">Home</a></li>
@@ -27,32 +27,37 @@
 		<!-- End Page Title -->
 
 		<section class="section dashboard">
-			<div class="row">
-				<div class="col-12">
-					<div class="card">
-						<div class="card-body">
-							<h5 class="card-title">일기장</h5>
+			<form name="form" method="post" action="/v1/infra/diary/diaryUsrForm">
+				<div class="row">
+					<div class="col-12">
+						<div class="card">
+							<div class="card-body">
+								<h5 class="card-title">일기</h5>
 
-							<label for="inputPassword" class="col-sm-2 col-form-label">일기</label>
-							<textarea class="form-control" style="height: 300px"></textarea>
+								<textarea class="form-control"></textarea>
 
-							<div class="form-check form-switch"
-								style="display: flex; justify-content: end; margin-top: 13px;">
-								<input class="form-check-input" type="checkbox"
-									id="flexSwitchCheckChecked" checked=""> <label
-									class="form-check-label" for="flexSwitchCheckChecked" style="margin-left:7px;">일기
-									공개</label>
+								<div class="form-check form-switch d-flex justify-content-end mt-3">
+									<input class="form-check-input" type="checkbox"
+										id="flexSwitchCheckChecked" checked=""> <label
+										class="form-check-label ms-1" for="flexSwitchCheckChecked">일기
+										공개</label>
+								</div>
+
+								<div class="d-flex justify-content-between mt-3">
+									<button type="button" class="btn btn-outline-primary"
+										id="btnList">
+										<i class="ri-file-list-3-line"></i>
+									</button>
+									<button type="button" class="btn btn-primary">
+										<i class="ri-ball-pen-line"></i>
+									</button>
+								</div>
+
 							</div>
-							
-							<div style="display:flex;justify-content:space-between;margin-top:13px;">
-								<button type="button" class="btn btn-outline-primary"><i class="bi bi-list"></i></button>
-								<button type="button" class="btn btn-primary"><i class="bi bi-patch-check"></i></button>
-							</div>
-
 						</div>
 					</div>
 				</div>
-			</div>
+			</form>
 		</section>
 
 	</main>
@@ -86,6 +91,14 @@
 
 	<!-- Template Main JS File -->
 	<script src="/usr/v1/template/NiceAdmin-1.0.0/assets/js/main.js"></script>
+
+	<script type="text/javascript">
+		document.getElementById("btnList").onclick = function() {
+			let form = document.querySelector("[name=form]");
+			form.action = "/v1/infra/diary/diaryUsrList";
+			form.submit();
+		}
+	</script>
 
 </body>
 

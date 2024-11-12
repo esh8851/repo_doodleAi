@@ -16,7 +16,7 @@
 	<main id="main" class="main">
 
 		<div class="pagetitle">
-			<h1>다이어리</h1>
+			<h1>일기장</h1>
 			<nav>
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item"><a href="index.html">Home</a></li>
@@ -27,80 +27,98 @@
 		<!-- End Page Title -->
 
 		<section class="section dashboard">
-			<form name="form" action="/v1/infra/diary/diaryUsrForm">
+			<form name="form" method="post" action="/v1/infra/diary/diaryUsrList">
 				<div class="row">
 					<div class="col-12">
 						<div class="card">
 							<div class="card-body">
-								<h5 class="card-title">나의 일기장</h5>
+								<h5 class="card-title">나의 일기</h5>
 								<!-- Default Table -->
 								<table class="table">
 									<thead>
 										<tr>
 											<th scope="col">순서</th>
 											<th scope="col">일기</th>
+											<th scope="col">설명</th>
 											<th scope="col">작성일</th>
 											<th scope="col">등록일</th>
 											<th scope="col">수정일</th>
-											<th scope="col">공개 여부</th>
+											<th scope="col">공개&비공개</th>
 										</tr>
 									</thead>
 									<tbody>
 										<tr>
 											<th scope="row">1</th>
-											<td>Brandon Jacob</td>
-											<td>Designer</td>
-											<td>28</td>
+											<td>일기1</td>
+											<td>aaa</td>
 											<td>2016-05-25</td>
-											<td>Y</td>
+											<td>2016-05-25</td>
+											<td>2016-05-25</td>
+											<td>공개</td>
 										</tr>
 										<tr>
-											<th scope="row">1</th>
-											<td>Brandon Jacob</td>
-											<td>Designer</td>
-											<td>28</td>
+											<th scope="row">2</th>
+											<td>일기2</td>
+											<td>bbb</td>
 											<td>2016-05-25</td>
-											<td>Y</td>
+											<td>2016-05-25</td>
+											<td>2016-05-25</td>
+											<td>공개</td>
 										</tr>
 										<tr>
-											<th scope="row">1</th>
-											<td>Brandon Jacob</td>
-											<td>Designer</td>
-											<td>28</td>
+											<th scope="row">3</th>
+											<td>일기3</td>
+											<td>ccc</td>
 											<td>2016-05-25</td>
-											<td>Y</td>
+											<td>2016-05-25</td>
+											<td>2016-05-25</td>
+											<td>비공개</td>
 										</tr>
 										<tr>
-											<th scope="row">1</th>
-											<td>Brandon Jacob</td>
-											<td>Designer</td>
-											<td>28</td>
+											<th scope="row">4</th>
+											<td>일기4</td>
+											<td>ddd</td>
 											<td>2016-05-25</td>
-											<td>Y</td>
+											<td>2016-05-25</td>
+											<td>2016-05-25</td>
+											<td>공개</td>
 										</tr>
 										<tr>
-											<th scope="row">1</th>
-											<td>Brandon Jacob</td>
-											<td>Designer</td>
-											<td>28</td>
+											<th scope="row">5</th>
+											<td>일기5</td>
+											<td>eee</td>
 											<td>2016-05-25</td>
-											<td>Y</td>
-										</tr>
-										<tr>
-											<th scope="row">1</th>
-											<td>Brandon Jacob</td>
-											<td>Designer</td>
-											<td>28</td>
 											<td>2016-05-25</td>
-											<td>Y</td>
+											<td>2016-05-25</td>
+											<td>공개</td>
 										</tr>
 									</tbody>
 								</table>
 								<!-- End Default Table Example -->
-								<div style="display: flex; justify-content: center;">
+								<div class="d-flex justify-content-center">
 									<button type="button" class="btn btn-primary" id="btnForm">일기
 										쓰기</button>
 								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-6">
+						<div class="card">
+							<div class="card-body">
+								<h5 class="card-title">나의 감정</h5>
+								<!-- Polar Area Chart -->
+								<canvas id="polarAreaChart" style="max-height: 400px;"></canvas>
+								<!-- End Polar Area Chart -->
+							</div>
+						</div>
+					</div>
+					<div class="col-6">
+						<div class="card">
+							<div class="card-body">
+								<h5 class="card-title">요일별 나의 주요감정</h5>
+								<!-- Bar Chart -->
+								<canvas id="barChart" style="max-height: 400px;"></canvas>
+								<!-- End Bar CHart -->
 							</div>
 						</div>
 					</div>
@@ -140,9 +158,89 @@
 	<!-- Template Main JS File -->
 	<script src="/usr/v1/template/NiceAdmin-1.0.0/assets/js/main.js"></script>
 
+	<!-- btnForm -->
 	<script type="text/javascript">
-		document.querySelector(".btnForm").onclick = function() {
-			
+		document.getElementById("btnForm").onclick = function() {
+			let form = document.querySelector("[name=form]");
+			form.action = "/v1/infra/diary/diaryUsrForm";
+			form.submit();
 		}
 	</script>
+
+	<!-- Polar Area Chart -->
+	<script>
+      document.addEventListener("DOMContentLoaded", () => {
+        new Chart(document.querySelector('#polarAreaChart'), {
+          type: 'polarArea',
+          data: {
+            labels: [
+              '부정',
+              '긍정',
+              '위험',
+              '건조',
+              '우울',
+              '센치',
+              '감정'
+            ],
+            datasets: [{
+              label: 'My First Dataset',
+              data: [11, 16, 7, 3, 14, 22, 37],
+              backgroundColor: [
+            	'rgb(255, 99, 132)',
+            	'rgb(75, 192, 192)',
+            	'rgb(255, 159, 64)',
+            	'rgb(201, 203, 207)',
+            	'rgb(54, 162, 235)',
+            	'rgb(153, 102, 255)',
+            	'rgb(255, 205, 86)'
+              ]
+            }]
+          }
+        });
+      });
+    </script>
+	<!-- End Polar Area Chart -->
+
+	<!-- Bar Chart -->
+	<script>
+      document.addEventListener("DOMContentLoaded", () => {
+        new Chart(document.querySelector('#barChart'), {
+          type: 'bar',
+          data: {
+            labels: ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'],
+            datasets: [{
+              label: '막대',
+              data: [65, 59, 80, 81, 56, 55, 40],
+              backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+                'rgba(255, 205, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(201, 203, 207, 0.2)'
+              ],
+              borderColor: [
+                'rgb(255, 99, 132)',
+                'rgb(255, 159, 64)',
+                'rgb(255, 205, 86)',
+                'rgb(75, 192, 192)',
+                'rgb(54, 162, 235)',
+                'rgb(153, 102, 255)',
+                'rgb(201, 203, 207)'
+              ],
+              borderWidth: 1
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+      });
+    </script>
+	<!-- End Bar Chart -->
 </html>

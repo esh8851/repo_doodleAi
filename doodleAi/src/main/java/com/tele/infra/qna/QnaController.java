@@ -14,4 +14,9 @@ public class QnaController {
 		return "/usr/v1/infra/qna/qnaUsrList";
 	}
 
+	@RequestMapping(value="/v1/infra/qna/qnaUsrForm")
+	public String qnaUsrFrom() {
+		return "/usr/v1/infra/qna/qnaUsrForm";
+	}
+	
 }

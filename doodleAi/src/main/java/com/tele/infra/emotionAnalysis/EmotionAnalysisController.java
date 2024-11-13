@@ -9,9 +9,15 @@ public class EmotionAnalysisController {
 	
 	@Autowired
 	EmotionAnalysisService emotionAnalysisService;
+	
 	@RequestMapping(value="/v1/infra/emotionAnalysis/emotionAnalysisUsrList")
 	public String emotionAnalysisUsrList() {
 		return "/usr/v1/infra/emotionAnalysis/emotionAnalysisUsrList";
+	}
+	
+	@RequestMapping(value="/v1/infra/emotionAnalysis/emotionAnalysisUsrForm")
+	public String emotionAnalysisUsrForm() {
+		return "/usr/v1/infra/emotionAnalysis/emotionAnalysisUsrForm";
 	}
 
 }

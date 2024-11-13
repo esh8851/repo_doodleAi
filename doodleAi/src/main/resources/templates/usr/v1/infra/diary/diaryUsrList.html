@@ -177,26 +177,6 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-6">
-						<div class="card">
-							<div class="card-body">
-								<h5 class="card-title fw-bold">나의 감정</h5>
-								<!-- Polar Area Chart -->
-								<canvas id="polarAreaChart" style="max-height: 400px;"></canvas>
-								<!-- End Polar Area Chart -->
-							</div>
-						</div>
-					</div>
-					<div class="col-6">
-						<div class="card">
-							<div class="card-body">
-								<h5 class="card-title fw-bold">요일별 나의 주요감정</h5>
-								<!-- Bar Chart -->
-								<canvas id="barChart" style="max-height: 400px;"></canvas>
-								<!-- End Bar CHart -->
-							</div>
-						</div>
-					</div>
 				</div>
 			</form>
 		</section>
@@ -242,80 +222,5 @@
 		}
 	</script>
 
-	<!-- Polar Area Chart -->
-	<script>
-      document.addEventListener("DOMContentLoaded", () => {
-        new Chart(document.querySelector('#polarAreaChart'), {
-          type: 'polarArea',
-          data: {
-            labels: [
-              '부정',
-              '긍정',
-              '위험',
-              '건조',
-              '우울',
-              '센치',
-              '감정'
-            ],
-            datasets: [{
-              label: 'My First Dataset',
-              data: [11, 16, 7, 3, 14, 22, 37],
-              backgroundColor: [
-            	'rgb(255, 99, 132)',
-            	'rgb(75, 192, 192)',
-            	'rgb(255, 159, 64)',
-            	'rgb(201, 203, 207)',
-            	'rgb(54, 162, 235)',
-            	'rgb(153, 102, 255)',
-            	'rgb(255, 205, 86)'
-              ]
-            }]
-          }
-        });
-      });
-    </script>
-	<!-- End Polar Area Chart -->
-
-	<!-- Bar Chart -->
-	<script>
-      document.addEventListener("DOMContentLoaded", () => {
-        new Chart(document.querySelector('#barChart'), {
-          type: 'bar',
-          data: {
-            labels: ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'],
-            datasets: [{
-              label: '막대',
-              data: [65, 59, 80, 81, 56, 55, 40],
-              backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(255, 159, 64, 0.2)',
-                'rgba(255, 205, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(201, 203, 207, 0.2)'
-              ],
-              borderColor: [
-                'rgb(255, 99, 132)',
-                'rgb(255, 159, 64)',
-                'rgb(255, 205, 86)',
-                'rgb(75, 192, 192)',
-                'rgb(54, 162, 235)',
-                'rgb(153, 102, 255)',
-                'rgb(201, 203, 207)'
-              ],
-              borderWidth: 1
-            }]
-          },
-          options: {
-            scales: {
-              y: {
-                beginAtZero: true
-              }
-            }
-          }
-        });
-      });
-    </script>
-	<!-- End Bar Chart -->
+	
 </html>

@@ -16,7 +16,7 @@
 	<main id="main" class="main">
 
 		<div class="pagetitle">
-			<h1>일기 쓰기</h1>
+			<h1>감정분석</h1>
 			<nav>
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item"><a href="index.html">Home</a></li>
@@ -27,37 +27,10 @@
 		<!-- End Page Title -->
 
 		<section class="section dashboard">
-			<form name="form" method="post" action="/v1/infra/diary/diaryUsrForm">
+			<form name="form" method="post" action="/v1/infra/emotionAnalysis/emotionAnalysisUsrList">
 				<div class="row">
 					<div class="col-12">
-						<div class="card">
-							<div class="card-body">
-								<h5 class="card-title fw-bold">일기</h5>
-
-								<!-- TinyMCE Editor -->
-								<textarea class="tinymce-editor"></textarea>
-								<!-- End TinyMCE Editor -->
-
-								<div
-									class="form-check form-switch d-flex justify-content-end mt-3">
-									<input class="form-check-input" type="checkbox"
-										id="flexSwitchCheckChecked" checked=""> <label
-										class="form-check-label ms-1" for="flexSwitchCheckChecked">일기
-										공개</label>
-								</div>
-
-								<div class="d-flex justify-content-between mt-3">
-									<button type="button" class="btn btn-lg btn-outline-primary"
-										id="btnList">
-										<i class="bi bi-list-task"></i>
-									</button>
-									<button type="button" class="btn btn-lg btn-primary">
-										<i class="bi bi-pencil"></i>
-									</button>
-								</div>
-
-							</div>
-						</div>
+					
 					</div>
 				</div>
 			</form>
@@ -95,14 +68,5 @@
 	<!-- Template Main JS File -->
 	<script src="/usr/v1/template/NiceAdmin-1.0.0/assets/js/main.js"></script>
 
-	<script type="text/javascript">
-		document.getElementById("btnList").onclick = function() {
-			let form = document.querySelector("[name=form]");
-			form.action = "/v1/infra/diary/diaryUsrList";
-			form.submit();
-		}
-	</script>
-
-</body>
-
+	
 </html>

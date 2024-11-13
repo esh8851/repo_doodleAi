@@ -32,11 +32,18 @@
 				<div class="col-12">
 					<div class="card">
 						<div class="card-body">
-							<h5 class="card-title">Ai</h5>
-
-							<!-- TinyMCE Editor -->
-							<textarea class="tinymce-editor"></textarea>
-							<!-- End TinyMCE Editor -->
+							<h5 class="card-title">doodle Ai</h5>
+								<from name="form" method="post" action="/v1/infra/act/actUsrForm">
+									<!-- TinyMCE Editor -->
+									<textarea class="tinymce-editor"></textarea>
+									<!-- End TinyMCE Editor -->
+								</from>
+							<div class="d-flex justify-content-between mt-3">
+								<button type="button" class="btn btn-outline-primary"
+										id="btnList">
+									<i class="bi bi-list-task"></i>
+								</button>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -64,6 +71,12 @@
 
   <!-- Template Main JS File -->
   <script src="/usr/v1/template/NiceAdmin-1.0.0/assets/js/main.js"></script>
+  
+  <script>
+	document.getElementById("btnList").onclick = function() {
+		window.location = "/v1/infra/act/actUsrList"
+	}
+  </script>
 
 </body>
 

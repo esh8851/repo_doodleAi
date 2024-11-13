@@ -10,8 +10,14 @@ public class ActController {
 	@Autowired
 	ActService actService;
 	
-	@RequestMapping(value="/v1/infra/act/actUsrView")
+	@RequestMapping(value="/v1/infra/act/actUsrList")
 	public String actUsrView() {
-		return "/usr/v1/infra/act/actUsrView";
+		return "/usr/v1/infra/act/actUsrList";
 	}
+	
+	@RequestMapping(value="/v1/infra/act/actUsrForm")
+	public String actUsrForm() {
+		return "/usr/v1/infra/act/actUsrForm";
+	}
+	
 }

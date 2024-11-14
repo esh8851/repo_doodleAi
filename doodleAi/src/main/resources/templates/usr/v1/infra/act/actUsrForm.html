@@ -15,43 +15,46 @@
 
   <main id="main" class="main">
 
-		<div class="pagetitle">
-			<h1>Ai 활동추천</h1>
-			<nav>
-				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="/v1/infra/index/indexUsrView">Home</a></li>
-					<li class="breadcrumb-item active">Ai 활동추천</li>
-				</ol>
-			</nav>
-		</div>
-		<!-- End Page Title -->
+    <div class="pagetitle">
+      <h1>Ai 활동추천</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/v1/infra/index/indexUsrView">Home</a></li>
+          <li class="breadcrumb-item active">Ai 활동추천</li>
+        </ol>
+      </nav>
+    </div>
+    <!-- End Page Title -->
 
-		<section class="section dashboard">
-			<div class="row">
+    <section class="section dashboard">
+      <div class="row">
 
-				<div class="col-12">
-					<div class="card">
-						<div class="card-body">
-							<h5 class="card-title">doodle Ai</h5>
-								<from name="form" method="post" action="/v1/infra/act/actUsrForm">
-									<!-- TinyMCE Editor -->
-									<textarea class="tinymce-editor"></textarea>
-									<!-- End TinyMCE Editor -->
-								</from>
-							<div class="d-flex justify-content-between mt-3">
-								<button type="button" class="btn btn-outline-primary"
-										id="btnList">
-									<i class="bi bi-list-task"></i>
-								</button>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
+        <div class="col-12">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">doodle Ai</h5>
+              <!-- 폼 수정 -->
+              <form name="form" method="post" action="/v1/infra/act/actUsrForm">
+                <h1>Ask the AI Assistant</h1>
+                <label for="userInput">Your question:</label>
+                <input type="text" id="userInput" name="userInput" required>
+                <button type="submit">Submit</button>
+              </form>
 
-	</main>
-	<!-- End #main -->
+              <!-- AI 응답을 표시 -->
+              <div>
+                <h3>AI's Response:</h3>
+                <p><strong>Your input:</strong> <span th:text="${userInput}"></span></p>
+                <p><strong>AI Response:</strong> <span th:text="${aiResponse}"></span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <!-- End #main -->
 
   <!-- Start Footer -->
   <th:block th:replace="~{/usr/v1/infra/include/footer :: footer}"></th:block>
@@ -71,11 +74,11 @@
 
   <!-- Template Main JS File -->
   <script src="/usr/v1/template/NiceAdmin-1.0.0/assets/js/main.js"></script>
-  
+
   <script>
-	document.getElementById("btnList").onclick = function() {
-		window.location = "/v1/infra/act/actUsrList"
-	}
+    document.getElementById("btnList").onclick = function() {
+      window.location = "/v1/infra/act/actUsrList"
+    }
   </script>
 
 </body>

@@ -42,6 +42,15 @@ dependencies {
 	// 파일첨부
 	// https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-aws
 	implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-aws', version: '2.2.6.RELEASE'
+	
+	//gpt
+	implementation 'org.springframework.boot:spring-boot-starter-web' // RestTemplate과 기본 웹 설정
+    implementation 'com.fasterxml.jackson.core:jackson-databind' // JSON 처리 라이브러리
+    implementation 'org.springframework.boot:spring-boot-starter-json' // JSON 직렬화/역직렬화
+}
+
+tasks.withType(JavaCompile) {
+    options.compilerArgs << "-parameters" // 파라미터 이름을 포함시키기 위한 설정
 }
 
 tasks.named('test') {

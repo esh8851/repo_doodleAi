@@ -29,7 +29,7 @@
 		<section class="section dashboard">
 			<form name="form" method="post">
 				<div class="row">
-					<div class="col-6">
+					<div class="col-12">
 						<div class="card">
 							<div class="card-body">
 								<h5 class="card-title fw-bold">나의 일기</h5>
@@ -54,28 +54,8 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-6">
-						<div class="card">
-							<div class="card-body">
-								<div class="row mb-3">
-<!-- 									<img alt="wordcloud" src="/usr/v1/template/NiceAdmin-1.0.0/assets/img/wordcloud_20241113170417.png" style="max-height:400px;"> -->
-								</div>
-							</div>
-						</div>
-					</div>
 				</div>
-				<div class="row">
-					<div class="col-12">
-						<div class="card">
-							<div class="card-body">
-								<h5 class="card-title fw-bold">나의 감정</h5>
-								<!-- Polar Area Chart -->
-								<canvas id="polarAreaChart" style="max-height: 400px;"></canvas>
-								<!-- End Polar Area Chart -->
-							</div>
-						</div>
-					</div>
-				</div>
+				
 			</form>
 		</section>
 
@@ -119,40 +99,6 @@
 		}
 	</script>
 	
-	<!-- Polar Area Chart -->
-	<script>
-      document.addEventListener("DOMContentLoaded", () => {
-        new Chart(document.querySelector('#polarAreaChart'), {
-          type: 'polarArea',
-          data: {
-            labels: [
-              '부정',
-              '긍정',
-              '위험',
-              '건조',
-              '우울',
-              '센치',
-              '감정'
-            ],
-            datasets: [{
-              label: 'My First Dataset',
-              data: [11, 16, 7, 3, 14, 22, 37],
-              backgroundColor: [
-            	'rgb(255, 99, 132)',
-            	'rgb(75, 192, 192)',
-            	'rgb(255, 159, 64)',
-            	'rgb(201, 203, 207)',
-            	'rgb(54, 162, 235)',
-            	'rgb(153, 102, 255)',
-            	'rgb(255, 205, 86)'
-              ]
-            }]
-          }
-        });
-      });
-    </script>
-	<!-- End Polar Area Chart -->
-
 
 </body>
 

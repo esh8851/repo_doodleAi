@@ -1,12 +1,12 @@
-package com.tele.infra.emotionAnalysis;
+package com.tele.infra.emotion;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class EmotionAnalysisService {
+public class EmotionService {
 	
 	@Autowired
-	EmotionAnalysisDao emotionAnalysisDao;
+	EmotionDao emotionDao;
 
 }

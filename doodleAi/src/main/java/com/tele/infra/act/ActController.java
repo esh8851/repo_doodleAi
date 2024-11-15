@@ -9,18 +9,21 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class ActController {
-    
+
     @Autowired
-    ActService actService;
-    
-    @RequestMapping(value="/v1/infra/act/actUsrList")
+    private ActService actService; // OpenAI API 호출 서비스
+
+    // 대화 화면 초기화 (GET)
+    @RequestMapping(value = "/v1/infra/act/actUsrList")
     public String actUsrView() {
         return "/usr/v1/infra/act/actUsrList";
     }
 
-    // OpenAI API 결과를 포함한 actUsrForm 페이지로 이동
+    // OpenAI API 결과를 포함한 actUsrForm 페이지로 이동 (GET)
     @RequestMapping(value = "/v1/infra/act/actUsrForm", method = RequestMethod.GET)
-    public String actUsrForm() {
+    public String actUsrForm(Model model) {
+        // 대화 이력이 있으면 뷰에 전달
+        model.addAttribute("conversationHistory", actService.getConversationHistory());
         return "/usr/v1/infra/act/actUsrForm";
     }
 
@@ -30,6 +33,8 @@ public class ActController {
         if (userInput == null || userInput.trim().isEmpty()) {
             // 사용자 입력이 없으면 기본 메시지나 예외 처리
             model.addAttribute("errorMessage", "입력값이 없습니다. 다시 시도해 주세요.");
+            // 현재까지의 대화 이력도 함께 전달
+            model.addAttribute("conversationHistory", actService.getConversationHistory());
             return "/usr/v1/infra/act/actUsrForm"; // 결과를 포함한 같은 폼 페이지로 돌아가기
         }
 
@@ -39,6 +44,9 @@ public class ActController {
         // 모델에 응답을 전달하여 뷰로 전달
         model.addAttribute("userInput", userInput);
         model.addAttribute("aiResponse", aiResponse);
+        
+        // 대화 이력 갱신 및 전달
+        model.addAttribute("conversationHistory", actService.getConversationHistory());
 
         return "/usr/v1/infra/act/actUsrForm"; // 결과를 포함한 같은 폼 페이지로 돌아가기
     }

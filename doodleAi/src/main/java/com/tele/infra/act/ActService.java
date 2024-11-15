@@ -1,30 +1,34 @@
 package com.tele.infra.act;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.*;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.*;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
 public class ActService {
 
-    @Autowired
-    ActDao actDao;
-
-    @Autowired
-    private RestTemplate restTemplate;  // RestTemplate을 주입받아 사용
-
     private static final String OPENAI_API_URL = "https://api.openai.com/v1/chat/completions";
-    
-    // application-external.properties에서 API 키를 읽어옵니다
+
     @Value("${openai.api.key}")
     private String API_KEY;
 
     private List<Map<String, Object>> conversationHistory = new ArrayList<>(); // 대화 이력 저장
+
+    @Autowired
+    private RestTemplate restTemplate;
 
     /**
      * OpenAI API 호출 메소드
@@ -36,7 +40,7 @@ public class ActService {
             // 사용자 메시지 추가
             conversationHistory.add(Map.of("role", "user", "content", prompt));
 
-            // OpenAI API 요청 본문 설정 
+            // OpenAI API 요청 본문 설정
             Map<String, Object> requestBody = new LinkedHashMap<>();
             requestBody.put("model", "gpt-3.5-turbo");
             requestBody.put("messages", conversationHistory);
@@ -74,5 +78,13 @@ public class ActService {
             e.printStackTrace();
         }
         return "Error: 응답을 처리하는데 문제가 발생했습니다.";
+    }
+
+    /**
+     * 대화 이력을 반환
+     * @return 대화 이력 리스트
+     */
+    public List<Map<String, Object>> getConversationHistory() {
+        return conversationHistory;
     }
 }

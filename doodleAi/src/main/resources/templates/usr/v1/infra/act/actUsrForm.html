@@ -32,7 +32,8 @@
         <div class="col-12">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">doodle Ai</h5>
+              <h5 class="card-title">Doodle Ai</h5>
+
               <!-- 폼 수정 -->
               <form name="form" method="post" action="/v1/infra/act/actUsrForm">
                 <h1>Ask the AI Assistant</h1>
@@ -47,6 +48,24 @@
                 <p><strong>Your input:</strong> <span th:text="${userInput}"></span></p>
                 <p><strong>AI Response:</strong> <span th:text="${aiResponse}"></span></p>
               </div>
+
+              <!-- 대화 이력 표시 -->
+              <div>
+                <h3>Conversation History</h3>
+                <ul>
+                  <!-- 대화 이력 반복 출력 -->
+                  <li th:each="message : ${conversationHistory}">
+                    <strong th:text="${message.role == 'user' ? 'You' : 'AI'}">User</strong>: 
+                    <span th:text="${message.content}">Content</span>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- 오류 메시지 표시 -->
+              <div th:if="${errorMessage != null}">
+                <p style="color: red;" th:text="${errorMessage}"></p>
+              </div>
+
             </div>
           </div>
         </div>

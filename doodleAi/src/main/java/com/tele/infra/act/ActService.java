@@ -1,14 +1,20 @@
 package com.tele.infra.act;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.*;
-import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
-
 import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
 public class ActService {
@@ -21,16 +27,19 @@ public class ActService {
 
     // OpenAI API 호출을 위한 상수
     private static final String OPENAI_API_URL = "https://api.openai.com/v1/chat/completions";
-    private static final String API_KEY = "";  // 여기에 OpenAI API 키를 입력하세요. 
+
+    // application-external.properties에서 API 키를 읽어옵니다
+    @Value("${openai.api.key}")
+    private String API_KEY; 
 
     /**
      * OpenAI API 호출 메소드
      * @param prompt 사용자가 입력한 텍스트
-     * @return OpenAI GPT-3.5 모델의 응답
+     * @return OpenAI GPT-3.5 모델의 응답 (모델 응답만 반환)
      */
     public String getChatResponseFromOpenAI(String prompt) {
         try {
-            // OpenAI API 요청 본문 설정
+            // OpenAI API 요청 본문 설정 
             Map<String, Object> requestBody = new LinkedHashMap<>();
             requestBody.put("model", "gpt-3.5-turbo");
             requestBody.put("messages", Arrays.asList(
@@ -53,11 +62,19 @@ public class ActService {
             // API 호출: HTTP POST 요청
             ResponseEntity<String> response = restTemplate.exchange(OPENAI_API_URL, HttpMethod.POST, entity, String.class);
 
-            // API 응답 반환
-            return response.getBody();
+            // 응답에서 모델의 응답만 추출
+            String responseBody = response.getBody();
+            if (responseBody != null) {
+                // JSON 파싱해서 모델의 응답만 추출
+                Map<String, Object> responseMap = objectMapper.readValue(responseBody, Map.class);
+                // "choices"에서 첫 번째 항목의 "message.content" 값을 가져옴
+                Map<String, Object> choice = ((java.util.List<Map<String, Object>>) responseMap.get("choices")).get(0);
+                Map<String, Object> message = (Map<String, Object>) choice.get("message");
+                return (String) message.get("content"); 
+            }
         } catch (Exception e) {
             e.printStackTrace();
-            return "Error: " + e.getMessage();
         }
+        return "Error: 응답을 처리하는데 문제가 발생했습니다.";
     }
 }

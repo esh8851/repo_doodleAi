@@ -21,7 +21,7 @@ public class ActService {
 
     // OpenAI API 호출을 위한 상수
     private static final String OPENAI_API_URL = "https://api.openai.com/v1/chat/completions";
-    private static final String API_KEY = "";  // 여기에 OpenAI API 키를 입력하세요.
+    private static final String API_KEY = "";  // 여기에 OpenAI API 키를 입력하세요. 
 
     /**
      * OpenAI API 호출 메소드

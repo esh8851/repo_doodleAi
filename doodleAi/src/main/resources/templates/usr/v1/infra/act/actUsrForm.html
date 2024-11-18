@@ -1,6 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+<style>
+	/* 대화 메시지 스타일 */
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
 
+li {
+    margin: 10px 0;
+    padding: 10px 15px;
+    border-radius: 15px;
+    max-width: 50%;
+    word-wrap: break-word;
+}
+
+/* 사용자 메시지 (오른쪽) */
+.user-message {
+    background-color: #d1e7dd;
+    align-self: flex-end;
+    text-align: right;
+    margin-left: auto;
+}
+
+/* AI 메시지 (왼쪽) */
+.ai-message {
+    background-color: #f8d7da;
+    align-self: flex-start;
+    text-align: left;
+    margin-right: auto;
+}
+
+/* 대화창 스타일 */
+
+	
+</style>
 <th:block th:replace="~{/usr/v1/infra/include/head :: head}"></th:block>
 
 <body>
@@ -27,50 +62,42 @@
     <!-- End Page Title -->
 
     <section class="section dashboard">
-      <div class="row">
+	    <div class="row">
+	        <div class="col-12">
+	            <div class="card" style="max-width: 1300px; margin: auto; overflow: hidden;">
+	                <!-- 카드 내용 -->
+	                <div class="card-body" style="position: relative; z-index: 2; background-color: rgba(255, 255, 255, 0.9); padding: 20px; border-radius: 10px;">
+	                    <h5 class="card-title" style="text-align: center; font-size: 24px;">Doodle AI</h5>
+	
+	                    <!-- 대화 내용 표시 -->
+	                    <div id="chatContainer" style="max-height: 400px; overflow-y: auto; padding: 10px; border: 1px solid #ccc; border-radius: 10px; background-color: #f8f9fa;">
+	                        <!-- 서버에서 받은 대화 이력을 표시 -->
+	                        <ul id="usrul" style="list-style: none; padding: 0;">
+	                            <li id="" th:each="message : ${conversationHistory}" th:classappend="${message.role == 'user'} ? 'user-message' : 'ai-message'">
+	                                <div th:text="${message.content}"></div>
+	                            </li>
+	                        </ul>
+	                    </div>
+	
+	                    <!-- 입력 폼 -->
+	                    <div class="form-container" style="position: relative; margin-top: 15px;">
+	                        <form id="chatForm" method="post" action="/v1/infra/act/actUsrForm">
+	                            <div style="display: flex; gap: 10px;">
+	                                <input type="text" id="userInput" name="userInput" autocomplete="off" required placeholder="질문을 입력하세요..." style="flex: 1; padding: 10px; border-radius: 5px; border: 1px solid #ccc; font-size: 16px;">
+	                                <button type="submit" style="padding: 10px 20px; border-radius: 5px;   border: none; font-size: 22px; cursor: pointer;">
+	                                    <i class="bi bi-cursor"></i>
+	                                </button>
+	                            </div>
+	                        </form>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</section>
 
-        <div class="col-12">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Doodle Ai</h5>
 
-              <!-- 폼 수정 -->
-              <form name="form" method="post" action="/v1/infra/act/actUsrForm">
-                <h1>Ask the AI Assistant</h1>
-                <label for="userInput">Your question:</label>
-                <input type="text" id="userInput" name="userInput" autocomplete="off" required>
-                <button type="submit">Submit</button>
-              </form>
 
-              <!-- AI 응답을 표시 -->
-              <div>
-                <h3>AI's Response:</h3>
-                <p><strong>Your input:</strong> <span th:text="${userInput}"></span></p>
-                <p><strong>AI Response:</strong> <span th:text="${aiResponse}"></span></p>
-              </div>
-
-              <!-- 대화 이력 표시 -->
-              <div>
-                <h3>Conversation History</h3>
-                <ul>
-                  <!-- 대화 이력 반복 출력 -->
-                  <li th:each="message : ${conversationHistory}">
-                    <strong th:text="${message.role == 'user' ? 'You' : 'AI'}">User</strong>: 
-                    <span th:text="${message.content}">Content</span>
-                  </li>
-                </ul>
-              </div>
-
-              <!-- 오류 메시지 표시 -->
-              <div th:if="${errorMessage != null}">
-                <p style="color: red;" th:text="${errorMessage}"></p>
-              </div>
-
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
   </main>
   <!-- End #main -->
@@ -99,6 +126,7 @@
       window.location = "/v1/infra/act/actUsrList"
     }
   </script>
+  
 
 </body>
 

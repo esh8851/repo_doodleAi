@@ -25,7 +25,7 @@ public class DreamsController {
 	}
 
 	@RequestMapping(value = "/v1/infra/dreams/dreamsUsrView", method = RequestMethod.GET)
-    public String actUsrForm(HttpSession session, Model model) {
+    public String dreamsUsrForm(HttpSession session, Model model) {
         // 세션에서 대화 이력 가져오기 (없으면 새로 생성)
         List<Map<String, Object>> conversationHistory = (List<Map<String, Object>>) session.getAttribute("conversationHistory");
         if (conversationHistory == null) {
@@ -39,7 +39,7 @@ public class DreamsController {
     }
 
     @RequestMapping(value = "/v1/infra/dreams/dreamsUsrView", method = RequestMethod.POST)
-    public String actUsrFormSubmit(
+    public String dreamsUsrFormSubmit(
             @RequestParam(value = "userInput", required = false) String userInput,
             HttpSession session,
             Model model) {
@@ -62,6 +62,10 @@ public class DreamsController {
 
         // OpenAI API 호출
         String aiResponse = dreamsService.getChatResponseFromOpenAI(conversationHistory);
+        
+        // 모델에 응답을 전달하여 뷰로 전달
+        model.addAttribute("userInput", userInput);
+        model.addAttribute("aiResponse", aiResponse);
 
         // OpenAI 응답을 대화 이력에 추가
         conversationHistory.add(Map.of("role", "assistant", "content", aiResponse));

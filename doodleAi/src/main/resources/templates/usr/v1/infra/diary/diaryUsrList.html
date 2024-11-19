@@ -201,26 +201,35 @@
 
 	<!-- Template Main JS File -->
 	<script src="/usr/v1/template/NiceAdmin-1.0.0/assets/js/main.js"></script>
-
-	<!-- btnForm -->
-	<script type="text/javascript">
-		document.getElementById("btnForm").onclick = function() {
-			let form = document.querySelector("[name=form]");
-			form.action = "/v1/infra/diary/diaryUsrForm";
-			form.submit();
-		}
-	</script>
 	
-	<script src='/usr/v1/fullcalendar-6.1.15/dist/index.global.min.js'></script>
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        var calendarEl = document.getElementById('calendar');
-        var calendar = new FullCalendar.Calendar(calendarEl, {
-          initialView: 'dayGridMonth'
-        });
-        calendar.render();
-      });
-    </script>
+	<!-- Calendar -->
+	<script src='/usr/v1/fullcalendar-6.1.15/dist/index.global.js'></script>
+	<script src='https://cdn.jsdelivr.net/npm/@fullcalendar/google-calendar@6.1.14/index.global.min.js'></script>
+	
+	<script type="text/javascript">
+	document.addEventListener('DOMContentLoaded', function() {
+	    var calendarEl = document.getElementById('calendar');
 
+	    var calendar = new FullCalendar.Calendar(calendarEl, {
+	    	initialView: 'dayGridMonth',
+// 	      googleCalendarApiKey: 'AIzaSyAEaiMpZakvjo9Rr9I3htBEW-MudjBXcNQ',
+// 	      eventSources: [
+// 	        {
+// 	          googleCalendarId: 'c6968b4c612c36acb862d54bc855b24b89c6b6bdc62ff80823036f25c8e8cca5@group.calendar.google.com'
+// 	        },
+// 	        {
+// 	          googleCalendarId: 'efgh5678@group.calendar.google.com',
+// 	          className: 'nice-event'
+// 	        }
+// 	      ]
+	    	
+	    	dateClick: function(info) {
+                window.location.href = "/v1/infra/diary/diaryUsrForm";
+            }
+	    });
+
+	    calendar.render();
+	  });
+	</script>
 	
 </html>

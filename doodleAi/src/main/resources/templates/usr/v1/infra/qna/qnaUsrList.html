@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<style>
+.hr{
+	margin: 0px 0px 0px 90px;
+}
+</style>
 <th:block th:replace="~{/usr/v1/infra/include/head :: head}"></th:block>
 
 <body>
@@ -30,12 +34,13 @@
 			<form name="form" method="post" action="/v1/infra/diary/diaryUsrList">
 				<div class="row">
 					<div class="col-12">
-						<div class="card">
+						<div class="card" style="position: relative; background-image: url('/usr/v1/template/NiceAdmin-1.0.0/assets/img/8.jpg'); background-size: contain; background-position: center; color: white; min-height: 300px;">
 				            <div class="card-body">
-				              <h1 style="color:black; text-align: center; margin-top:30px; margin-bottom:20px;">질문 게시판</h1>
+				              <h1 style="color:black; margin-left: 530px; margin-top:30px; margin-bottom:20px;">질문 게시판</h1>
 							  <div class="row d-flex justify-content-center">
 							   	<div class="col-sm-3">
-							        <input type="text" class="form-control" placeholder="검색어">
+							        <input type="text" class="form-control" placeholder="검색어" style="opacity: 0.8;">
+
 							    </div>
 							    <div class="col-sm-auto d-flex justify-content-start">
 							        <button type="button" class="btn btn-outline-black border-dark">
@@ -48,9 +53,9 @@
 							</div>
 
 				              <!-- Default Table -->
-				              <table class="table">
+				              <table class="table" style="max-width: 1150px; width: 100%; margin-bottom: 50px; margin-left: 80px; opacity: 0.6;"> 
 				                <thead>
-				                <hr style="margin-top:30px;">
+				                <hr style="margin-top:30px; margin-left:80px; width: 1150px;">
 				                  <tr>
 				                    <th scope="col">No</th>
 				                    <th scope="col">카테고리</th>

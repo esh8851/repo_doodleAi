@@ -1,6 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<style>
+.qnaCategory{
+	border: 2px solid pink;
+	width: 277px;
+	height: 45px;
+	border-radius: 7px;
+	background-color: rgba(255, 255, 255, 0.8);
+}
+.qnaTitle{
+	border: 2px solid pink;
+	margin: 0px 0px 13px 150px;
+	width: 700px;
+	height: 45px;
+	padding: 10px;
+	border-radius: 7px;
+	background-color: rgba(255, 255, 255, 0.8);
+}
+.qnatext {
+    max-width: 75%; 
+    width: 100%; 
+    min-height: 200px;
+    padding: 10px 10px 160px;
+    border: 2px solid pink;
+    border-radius: 7px;
+    margin-left: 150px;
+    background-color: rgba(255, 255, 255, 0.8);
+    
+    overflow-y: auto; /* 내용이 넘칠 경우 세로 스크롤 활성화 */
+    resize: vertical; /* 사용자가 높이를 조정 가능하도록 허용 (선택 사항) */
+    box-sizing: border-box; /* 패딩과 테두리를 포함한 크기 계산 */
+}
+.card-title {
+	margin: 0px 0px 0px 570px;
+  }
+</style>
 <th:block th:replace="~{/usr/v1/infra/include/head :: head}"></th:block>
 
 <body>
@@ -28,30 +62,41 @@
 
 		<section class="section dashboard">
 			<div class="row">
-
 				<div class="col-12">
-					<div class="card">
+					<div class="card" style="position: relative; background-image: url('/usr/v1/template/NiceAdmin-1.0.0/assets/img/4.jpg'); background-size: contain; background-position: center; color: white; min-height: 300px;">
+<!-- 							<img src="/usr/v1/template/NiceAdmin-1.0.0/assets/img/4.jpg" alt="설명 텍스트" /> -->
 						<div class="card-body">
-							<h5 class="card-title">글 쓰기</h5>
+							<h5 class="card-title">질문하기</h5>
 								<from name="form" method="post" action="/v1/infra/act/actUsrForm">
-									<!-- TinyMCE Editor -->
-									<textarea class="tinymce-editor"></textarea>
-									<!-- End TinyMCE Editor -->
+									<input type="text" class="qnaTitle" id="qnaTitle" name="qnaTitle" placeholder="제목을 입력해주세요.">
+									<select class="qnaCategory" id="qnaCategory" name="qnaCategory">
+										<option>선택해주세요.</option>
+										<option>문의</option>
+										<option>개인 정보</option>
+										<option>오류 / 버그</option>
+										<option>서비스</option>
+									</select>
+									<textarea class="qnatext" placeholder="내용을 입력해주세요."></textarea>
 								</from>
-							<div class="d-flex justify-content-between mt-3">
-								<button type="button" class="btn btn-outline-primary"
-										id="btnList">
-									<i class="bi bi-list-task"></i>
-								</button>
+								<div class="d-flex justify-content-between mt-3">
+									<button type="button" class="btn btn-outline-primary" id="btnList" style="background-color: pink; color: black; border-color: pink;">
+									<i class="bi bi-list-task"> 목록</i>
+									</button>
+									<div class="row">
+								 		<div class="col d-flex justify-content-end">
+									  		<button type="button" style="background:pink; color:black;" class="btn btn-black" id="btnForm">
+									  	  	<i class="bi bi-pencil" style="color:black;"></i> 글쓰기
+									  		</button>
+								 	 	</div>
+						  			</div>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</section>
-
-	</main>
-	<!-- End #main -->
+			</section>
+		</main>
+		<!-- End #main -->
 
   <!-- Start Footer -->
   <th:block th:replace="~{/usr/v1/infra/include/footer :: footer}"></th:block>

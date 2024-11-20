@@ -18,7 +18,6 @@
   <!-- End Sidebar-->
 
   <main id="main" class="main">
-
 		<div class="pagetitle">
 			<h1>QnA</h1>
 			<nav>
@@ -29,95 +28,112 @@
 			</nav>
 		</div>
 		<!-- End Page Title -->
-		
 		<section class="section dashboard">
 			<form name="form" method="post" action="/v1/infra/diary/diaryUsrList">
 				<div class="row">
 					<div class="col-12">
 						<div class="card" style="position: relative; background-image: url('/usr/v1/template/NiceAdmin-1.0.0/assets/img/8.jpg'); background-size: contain; background-position: center; color: white; min-height: 300px;">
-				            <div class="card-body">
-				              <h1 style="color:black; margin-left: 530px; margin-top:30px; margin-bottom:20px;">질문 게시판</h1>
-							  <div class="row d-flex justify-content-center">
-							   	<div class="col-sm-3">
-							        <input type="text" class="form-control" placeholder="검색어" style="opacity: 0.8;">
-
-							    </div>
-							    <div class="col-sm-auto d-flex justify-content-start">
-							        <button type="button" class="btn btn-outline-black border-dark">
-							            <i class="bi bi-search"></i>
-							        </button>
-							        <button type="button" class="btn btn-outline-black border-black">
-							            <i class="bi bi-arrow-repeat"></i>
-							        </button>
-							    </div>
-							</div>
+				        	<div class="card-body">
+				            <h1 style="color:black; margin-left: 530px; margin-top:30px; margin-bottom:20px;">질문 게시판</h1>
+								<div class="row d-flex justify-content-center">
+									<div class="col-sm-3">
+							        	<input type="text" class="form-control" placeholder="검색어" style="opacity: 0.8;">
+							    	</div>
+							    	<div class="col-sm-auto d-flex justify-content-start">
+							        	<button type="button" class="btn btn-outline-black border-dark">
+							            	<i class="bi bi-search"></i>
+							        	</button>
+							        	<button type="button" class="btn btn-outline-black border-black">
+							            	<i class="bi bi-arrow-repeat"></i>
+							        	</button>
+							    	</div>
+								</div>
 
 				              <!-- Default Table -->
-				              <table class="table" style="max-width: 1150px; width: 100%; margin-bottom: 50px; margin-left: 80px; opacity: 0.6;"> 
-				                <thead>
-				                <hr style="margin-top:30px; margin-left:80px; width: 1150px;">
-				                  <tr>
-				                    <th scope="col">No</th>
-				                    <th scope="col">카테고리</th>
-				                    <th scope="col">제목</th>
-				                    <th scope="col">작성자</th>
-				                    <th scope="col">작성일</th>
-				                  </tr>
-				                </thead>
-				                <tbody>
-				                  <tr>
-				                    <th scope="row">1</th>
-				                    <td>질문</td>
-				                    <td>제목 적는 곳</td>
-				                    <td>아이디</td>
-				                    <td>2016-05-25</td>
-				                  </tr>
-				                  <tr>
-				                    <th scope="row">2</th>
-				                    <td>오류</td>
-				                    <td>제목 적는 곳</td>
-				                    <td>아이디</td>
-				                    <td>2014-12-05</td>
-				                  </tr>
-				                  <tr>
-				                    <th scope="row">3</th>
-				                    <td>계정</td>
-				                    <td>제목 적는 곳</td>
-				                    <td>아이디</td>
-				                    <td>2011-08-12</td>
-				                  </tr>
-				                  <tr>
-				                    <th scope="row">4</th>
-				                    <td>질문</td>
-				                    <td>제목 적는 곳</td>
-				                    <td>아이디</td>
-				                    <td>2012-06-11</td>
-				                  </tr>
-				                  <tr>
-				                    <th scope="row">5</th>
-				                    <td>카테고리</td>
-				                    <td>제목 적는 곳</td>
-				                    <td>아이디</td>
-				                    <td>2011-04-19</td>
-				                  </tr>
-				                </tbody>
-				              </table>
-				              <!-- End Default Table Example -->
-				            </div>
-				          </div>
-				          <div class="row">
-							  <div class="col d-flex justify-content-end">
-								  <button type="button" style="background:black; color:white;" class="btn btn-black" id="btnForm">
-								  	  <i class="bi bi-pencil" style="color:white;"></i>글쓰기
-								  </button>
-							  </div>
+					            <table class="table" style="max-width: 1150px; width: 100%; margin-bottom: 50px; margin-left: 80px; opacity: 0.6;"> 
+					                <thead>
+					                	<hr style="margin-top:30px; margin-left:80px; width: 1150px;">
+					                    <tr>
+					                   		<th scope="col">No</th>
+						                  	<th scope="col">카테고리</th>
+						                 	<th scope="col">제목</th>
+						                 	<th scope="col">작성자</th>
+		  			                        <th scope="col">작성일</th>
+							            </tr>
+					                </thead>
+					                <tbody>
+					                	<tr>
+					                    	<th scope="row">1</th>
+					                    	<td>질문</td>
+					                    	<td>제목 적는 곳</td>
+					                    	<td>아이디</td>
+					                    	<td>2016-05-25</td>
+					                  	</tr>
+					                  	<tr>
+					                    	<th scope="row">2</th>
+					                    	<td>오류</td>
+					                    	<td>제목 적는 곳</td>
+					                    	<td>아이디</td>
+					                    	<td>2014-12-05</td>
+					                  	</tr>
+					                  	<tr>
+					                    	<th scope="row">3</th>
+					                    	<td>계정</td>
+					                    	<td>제목 적는 곳</td>
+					                    	<td>아이디</td>
+					                    	<td>2011-08-12</td>
+					                  	</tr>
+					                  	<tr>
+					                    	<th scope="row">4</th>
+					                    	<td>질문</td>
+					                    	<td>제목 적는 곳</td>
+					                    	<td>아이디</td>
+					                    	<td>2012-06-11</td>
+					                  	</tr>
+					                  	<tr>
+					                    	<th scope="row">5</th>
+					                    	<td>카테고리</td>
+					                    	<td>제목 적는 곳</td>
+					                    	<td>아이디</td>
+					                    	<td>2011-04-19</td>
+					                  	</tr>
+					              </tbody>
+					          </table>
+				              <!-- Pagination with icons -->
+					          <nav aria-label="Page navigation example" style="margin-left: 550px; margin-top:100px; opacity: 0.7;">
+					    	      <ul class="pagination">
+					    	          <li class="page-item">
+					                      <a class="page-link" href="#" aria-label="Previous">
+					                          <span aria-hidden="true">&laquo;</span>
+					                      </a>
+					                  </li>
+					                      <li class="page-item"><a class="page-link" href="#">1</a></li>
+					                      <li class="page-item"><a class="page-link" href="#">2</a></li>
+					                      <li class="page-item"><a class="page-link" href="#">3</a></li>
+					                      <li class="page-item">
+					                      <a class="page-link" href="#" aria-label="Next">
+					                      	<span aria-hidden="true">&raquo;</span>
+					                      </a>
+					                  </li>
+					              </ul>
+					          </nav>
+					          <!-- End Pagination with icons -->
+					          <!-- End Default Table Example -->
+					      </div>
+					  </div>
+					  <div class="row">
+					  	  <div class="col d-flex justify-content-end">
+						  	  <button type="button" style="background:black; color:white;" class="btn btn-black" id="btnForm">
+								  <i class="bi bi-pencil" style="color:white;"></i>글쓰기
+							  </button>
 						  </div>
-				  	  </div>
+					  </div>
 				  </div>
-			  </form>
-		  </section>
-	  </main>
-		<!-- End #main -->
+			  </div>
+		  </form>
+	  </section>
+	</main>
+	<!-- End #main -->
 
   <!-- ======= Footer ======= -->
   <th:block th:replace="~{/usr/v1/infra/include/footer :: footer}"></th:block>

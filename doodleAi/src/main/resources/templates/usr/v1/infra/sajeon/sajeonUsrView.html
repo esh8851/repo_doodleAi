@@ -1,6 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<style>
+#btnName {
+	border:none;
+	padding: 0px;
+	background: none;
+	cursor: pointer;
+}
+#btnEmotion{
+	border:none;
+	padding: 0px;
+	background: none;
+	cursor: pointer;
+}
+#btnScore{
+	border:none;
+	padding: 0px;
+	background: none;
+	cursor: pointer;
+}
+</style>
 <!-- head S -->
 <th:block th:replace="~{/usr/v1/infra/include/head :: head}"></th:block>
 <!-- head E -->
@@ -39,9 +58,9 @@
 							<table class="table table-borderless">
 								<thead>
 									<tr>
-										<th scope="col">유형</th>
-										<th scope="col">감정</th>
-										<th scope="col">점수</th>
+										<th scope="col">유형 <button id="btnName"><i class="bi bi-arrow-down-up"></i></button></th>
+										<th scope="col">감정 <button id="btnEmotion"><i class="bi bi-arrow-down-up"></i></button></th>
+										<th scope="col">점수 <button id="btnScore"><i class="bi bi-arrow-down-up"></i></button></th>
 									</tr>
 								</thead>
 								<tbody>

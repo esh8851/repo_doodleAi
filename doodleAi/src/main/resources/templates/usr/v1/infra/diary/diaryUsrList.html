@@ -209,9 +209,13 @@
 	<script type="text/javascript">
 	document.addEventListener('DOMContentLoaded', function() {
 	    var calendarEl = document.getElementById('calendar');
+	    
 
 	    var calendar = new FullCalendar.Calendar(calendarEl, {
 	    	initialView: 'dayGridMonth',
+	    	displayEventTime:true,
+	    	
+// 	      google calendar api
 // 	      googleCalendarApiKey: 'AIzaSyAEaiMpZakvjo9Rr9I3htBEW-MudjBXcNQ',
 // 	      eventSources: [
 // 	        {
@@ -222,10 +226,25 @@
 // 	          className: 'nice-event'
 // 	        }
 // 	      ]
-	    	
+	    
+	    	headerToolbar: {
+                end: 'addEventButton prev next'  // 스페이스-버튼띄움 ,-붙여서 생성
+            },
+	    
+	    	customButtons: {
+                addEventButton: { // 추가한 버튼 설정
+                    text : "일정 추가",  // 버튼 내용
+                    click : function(){
+                    	// 버튼 클릭 시 이벤트 추가
+                    	window.location.href = "/v1/infra/diary/diaryUsrForm";
+                    }
+                }
+            },
+            
 	    	dateClick: function(info) {
                 window.location.href = "/v1/infra/diary/diaryUsrForm";
-            }
+            },
+            
 	    });
 
 	    calendar.render();

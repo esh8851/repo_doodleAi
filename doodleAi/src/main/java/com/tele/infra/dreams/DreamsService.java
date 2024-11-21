@@ -32,12 +32,12 @@ public class DreamsService {
      * @param conversationHistory 대화 이력
      * @return OpenAI GPT-3.5 모델의 응답
      */
-    public String getChatResponseFromOpenAI(List<Map<String, Object>> conversationHistory) {
+    public String getChatResponseFromOpenAI(List<Map<String, Object>> conversationHistory2) {
         try {
             // OpenAI API 요청 본문 설정
             Map<String, Object> requestBody = new LinkedHashMap<>();
             requestBody.put("model", "gpt-3.5-turbo");
-            requestBody.put("messages", conversationHistory);
+            requestBody.put("messages", conversationHistory2);
 
             // 헤더 설정
             HttpHeaders headers = new HttpHeaders();

@@ -45,36 +45,36 @@ public class DreamsController {
             Model model) {
 
         // 세션에서 대화 이력 가져오기 (없으면 새로 생성)
-        List<Map<String, Object>> conversationHistory = (List<Map<String, Object>>) session.getAttribute("conversationHistory");
-        if (conversationHistory == null) {
-            conversationHistory = new ArrayList<>();
-            session.setAttribute("conversationHistory", conversationHistory);
+        List<Map<String, Object>> conversationHistory2 = (List<Map<String, Object>>) session.getAttribute("conversationHistory2");
+        if (conversationHistory2 == null) {
+            conversationHistory2 = new ArrayList<>();
+            session.setAttribute("conversationHistory2", conversationHistory2);
         }
 
         if (userInput == null || userInput.trim().isEmpty()) {
             model.addAttribute("errorMessage", "입력값이 없습니다. 다시 시도해 주세요.");
-            model.addAttribute("conversationHistory", conversationHistory);
-            return "/usr/v1/infra/act/actUsrForm";
+            model.addAttribute("conversationHistory2", conversationHistory2);
+            return "/usr/v1/infra/dreams/dreamsUsrView";
         }
 
         // 사용자 입력을 대화 이력에 추가
-        conversationHistory.add(Map.of("role", "user", "content", userInput));
+        conversationHistory2.add(Map.of("role", "user", "content", userInput));
 
         // OpenAI API 호출
-        String aiResponse = dreamsService.getChatResponseFromOpenAI(conversationHistory);
+        String aiResponse = dreamsService.getChatResponseFromOpenAI(conversationHistory2);
         
         // 모델에 응답을 전달하여 뷰로 전달
         model.addAttribute("userInput", userInput);
         model.addAttribute("aiResponse", aiResponse);
 
         // OpenAI 응답을 대화 이력에 추가
-        conversationHistory.add(Map.of("role", "assistant", "content", aiResponse));
+        conversationHistory2.add(Map.of("role", "assistant", "content", aiResponse));
 
         // 세션에 대화 이력을 업데이트
-        session.setAttribute("conversationHistory", conversationHistory);
+        session.setAttribute("conversationHistory2", conversationHistory2);
 
         // 모델에 대화 이력을 전달
-        model.addAttribute("conversationHistory", conversationHistory);
+        model.addAttribute("conversationHistory2", conversationHistory2);
 
         return "/usr/v1/infra/dreams/dreamsUsrView";
     }

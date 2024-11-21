@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <th:block th:replace="~{/usr/v1/infra/include/head :: head}"></th:block>
 
@@ -28,136 +28,6 @@
 
 		<section class="section dashboard">
 			<form name="form" method="post" action="/v1/infra/diary/diaryUsrList">
-<!-- 				<div class="row"> -->
-<!-- 					<div class="col-12"> -->
-<!-- 						<div class="card"> -->
-<!-- 							<div class="card-body"> -->
-<!-- 								<h5 class="card-title fw-bold">나의 일기</h5> -->
-<!-- 								<div class="row"> -->
-<!-- 									<div class="col-sm-2 mb-3"> -->
-<!-- 										<select class="form-select" -->
-<!-- 											aria-label="Default select example"> -->
-<!-- 											<option selected="">공개&비공개</option> -->
-<!-- 											<option value="1">공개</option> -->
-<!-- 											<option value="2">비공개</option> -->
-<!-- 										</select> -->
-<!-- 									</div> -->
-<!-- 									<div class="col-sm-2 mb-3"> -->
-<!-- 										<select class="form-select" -->
-<!-- 											aria-label="Default select example"> -->
-<!-- 											<option selected="">날짜</option> -->
-<!-- 											<option value="1">작성일</option> -->
-<!-- 											<option value="2">등록일</option> -->
-<!-- 											<option value="2">수정일</option> -->
-<!-- 										</select> -->
-<!-- 									</div> -->
-<!-- 									<div class="col-sm-2"> -->
-<!-- 										<input type="text" class="form-control" -->
-<!-- 											placeholder="2024-11-12"> -->
-<!-- 									</div> -->
-<!-- 									<div class="col-sm-2"> -->
-<!-- 										<input type="text" class="form-control" -->
-<!-- 											placeholder="2024-11-12"> -->
-<!-- 									</div> -->
-<!-- 								</div> -->
-<!-- 								<div class="row"> -->
-<!-- 									<div class="col-sm-2 mb-3"> -->
-<!-- 										<select class="form-select" -->
-<!-- 											aria-label="Default select example"> -->
-<!-- 											<option selected="">검색구분</option> -->
-<!-- 											<option value="1">일기</option> -->
-<!-- 											<option value="2">순서</option> -->
-<!-- 										</select> -->
-<!-- 									</div> -->
-<!-- 									<div class="col-sm-2"> -->
-<!-- 										<input type="text" class="form-control" placeholder="검색어"> -->
-<!-- 									</div> -->
-<!-- 									<div class="col-sm"> -->
-<!-- 										<button type="submit" class="btn btn-outline-primary"> -->
-<!-- 											<i class="bi bi-search"></i> -->
-<!-- 										</button> -->
-<!-- 										<button type="submit" class="btn btn-outline-primary"> -->
-<!-- 											<i class="bi bi-arrow-repeat"></i> -->
-<!-- 										</button> -->
-<!-- 									</div> -->
-<!-- 								</div> -->
-<!-- 								<div class="row justify-content-between align-items-center mb-1"> -->
-<!-- 									<h5 class="col-sm-2 fw-semibold" style="color:#012970;">Total : 123</h5> -->
-<!-- 									<div class="col-sm-2"> -->
-<!-- 										<select class="form-select" -->
-<!-- 											aria-label="Default select example"> -->
-<!-- 											<option value="1">5</option> -->
-<!-- 											<option value="2">10</option> -->
-<!-- 										</select> -->
-<!-- 									</div> -->
-<!-- 								</div> -->
-
-<!-- 								<div class="row"> -->
-<!-- 									<div class="col"> -->
-<!-- 										Default Table -->
-<!-- 										<table class="table table-borderless"> -->
-<!-- 											<thead> -->
-<!-- 												<tr> -->
-<!-- 													<th scope="col">순서</th> -->
-<!-- 													<th scope="col">일기</th> -->
-<!-- 													<th scope="col">공개&비공개</th> -->
-<!-- 													<th scope="col">작성일</th> -->
-<!-- 												</tr> -->
-<!-- 											</thead> -->
-<!-- 											<tbody> -->
-<!-- 												<tr> -->
-<!-- 													<td scope="row">1</td> -->
-<!-- 													<td style="color:#012970;">일기1</td> -->
-<!-- 													<td>공개</td> -->
-<!-- 													<td>2016-05-25</td> -->
-<!-- 												</tr> -->
-<!-- 												<tr class="table-light"> -->
-<!-- 													<td scope="row">2</td> -->
-<!-- 													<td style="color:#012970;">일기2</td> -->
-<!-- 													<td>공개</td> -->
-<!-- 													<td>2016-05-25</td> -->
-<!-- 												</tr> -->
-<!-- 												<tr> -->
-<!-- 													<td scope="row">3</td> -->
-<!-- 													<td style="color:#012970;">일기3</td> -->
-<!-- 													<td>비공개</td> -->
-<!-- 													<td>2016-05-25</td> -->
-<!-- 												</tr> -->
-<!-- 												<tr class="table-light"> -->
-<!-- 													<td scope="row">4</td> -->
-<!-- 													<td style="color:#012970;">일기4</td> -->
-<!-- 													<td>공개</td> -->
-<!-- 													<td>2016-05-25</td> -->
-<!-- 												</tr> -->
-<!-- 												<tr> -->
-<!-- 													<td scope="row">5</td> -->
-<!-- 													<td style="color:#012970;">일기5</td> -->
-<!-- 													<td>공개</td> -->
-<!-- 													<td>2016-05-25</td> -->
-<!-- 												</tr> -->
-<!-- 											</tbody> -->
-<!-- 										</table> -->
-<!-- 									</div> -->
-<!-- 								</div> -->
-<!-- 								<div class="row"> -->
-<!-- 									<div class="col"> -->
-<!-- 										<nav aria-label="Page navigation example"> -->
-<!-- 											<ul class="pagination justify-content-center"> -->
-<!-- 												<li class="page-item"><a class="page-link" href="#">1</a></li> -->
-<!-- 												<li class="page-item"><a class="page-link" href="#">2</a></li> -->
-<!-- 												<li class="page-item"><a class="page-link" href="#">3</a></li> -->
-<!-- 											</ul> -->
-<!-- 										</nav> -->
-<!-- 									</div> -->
-<!-- 								</div> -->
-<!-- 								<div class="d-flex justify-content-center mt-3"> -->
-<!--                 					<button class="btn btn-outline-primary" type="button" id="btnForm"><i class="bi bi-pencil"></i> 일기쓰기</button> -->
-<!--               					</div> -->
-<!-- 								End Default Table Example -->
-<!-- 							</div> -->
-<!-- 						</div> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
 				<div class="row">
 					<div class="col-12">
 						<div class="card">
@@ -205,49 +75,42 @@
 	<!-- Calendar -->
 	<script src='/usr/v1/fullcalendar-6.1.15/dist/index.global.js'></script>
 	<script src='https://cdn.jsdelivr.net/npm/@fullcalendar/google-calendar@6.1.14/index.global.min.js'></script>
-	
 	<script type="text/javascript">
 	document.addEventListener('DOMContentLoaded', function() {
+		
 	    var calendarEl = document.getElementById('calendar');
-	    
 
 	    var calendar = new FullCalendar.Calendar(calendarEl, {
+	    	expandRows: true,
 	    	initialView: 'dayGridMonth',
-	    	displayEventTime:true,
-	    	
-// 	      google calendar api
-// 	      googleCalendarApiKey: 'AIzaSyAEaiMpZakvjo9Rr9I3htBEW-MudjBXcNQ',
-// 	      eventSources: [
-// 	        {
-// 	          googleCalendarId: 'c6968b4c612c36acb862d54bc855b24b89c6b6bdc62ff80823036f25c8e8cca5@group.calendar.google.com'
-// 	        },
-// 	        {
-// 	          googleCalendarId: 'efgh5678@group.calendar.google.com',
-// 	          className: 'nice-event'
-// 	        }
-// 	      ]
-	    
+	    	locale: "ko",
 	    	headerToolbar: {
-                end: 'addEventButton prev next'  // 스페이스-버튼띄움 ,-붙여서 생성
-            },
-	    
+	    		right : 'addEventButton',
+	    		center : 'title',
+	    		left : 'today prev next'
+	    	},
+	    	buttonText:{
+	    		today : '현재날짜'
+	    	},
 	    	customButtons: {
-                addEventButton: { // 추가한 버튼 설정
-                    text : "일정 추가",  // 버튼 내용
+                addEventButton: {
+                    text : "일정 추가",
                     click : function(){
-                    	// 버튼 클릭 시 이벤트 추가
                     	window.location.href = "/v1/infra/diary/diaryUsrForm";
                     }
                 }
             },
-            
-	    	dateClick: function(info) {
-                window.location.href = "/v1/infra/diary/diaryUsrForm";
+            dateClick: function(info){
+            	window.location.href = "/v1/infra/diary/diaryUsrForm";
             },
+            events: [
+            	
+            ]
             
 	    });
 
 	    calendar.render();
+	    
 	  });
 	</script>
 	

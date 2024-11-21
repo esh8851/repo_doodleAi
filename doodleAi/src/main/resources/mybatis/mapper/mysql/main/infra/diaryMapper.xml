@@ -7,4 +7,32 @@
 
 	<resultMap type="com.tele.infra.diary.DiaryDto" id="resultMapObj"></resultMap>
 	
+	<select id="selectList" resultMap="resultMapObj">
+		SELECT
+			a.ifdrSeq
+			,a.ifdrTitle
+			,a.ifdrDesc
+			,a.ifdrDateTime
+			,a.ifdrDateTimeEdit
+			,a.ifdrDelNy
+			,a.ifdrOpenNy
+			,a.member_ifmmSeq
+		FROM diary AS a
+		ORDER BY
+			a.ifdrSeq DESC
+	</select>
+	
+	<select id="selectOne" resultMap="resultMapObj">
+		SELECT
+			a.ifdrSeq
+			,a.ifdrTitle
+			,a.ifdrDesc
+			,a.ifdrDateTime
+			,a.ifdrDateTimeEdit
+			,a.ifdrDelNy
+			,a.ifdrOpenNy
+			,a.member_ifmmSeq
+		FROM diary AS a
+	</select>
+	
 </mapper>

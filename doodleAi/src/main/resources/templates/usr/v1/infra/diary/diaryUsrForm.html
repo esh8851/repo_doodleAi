@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <th:block th:replace="~{/usr/v1/infra/include/head :: head}"></th:block>
 
@@ -19,8 +19,8 @@
 			<h1>일기 쓰기</h1>
 			<nav>
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="index.html">Home</a></li>
-					<li class="breadcrumb-item active">Dashboard</li>
+					<li class="breadcrumb-item"><a href="index.html">홈</a></li>
+					<li class="breadcrumb-item active">일기 쓰기</li>
 				</ol>
 			</nav>
 		</div>
@@ -33,9 +33,16 @@
 						<div class="card">
 							<div class="card-body">
 								<h5 class="card-title fw-bold">일기</h5>
-
+								
+								<div class="row mb-3">
+				                  <label for="inputText" class="col-sm-1 col-form-label">일기 제목</label>
+				                  <div class="col-sm-3">
+				                    <input type="text" class="form-control" name="ifdrTitle" id="ifdrTitle">
+				                  </div>
+				                </div>
+								
 								<!-- TinyMCE Editor -->
-								<textarea class="tinymce-editor"></textarea>
+								<textarea class="tinymce-editor" name="ifdrDesc" id="ifdrDesc"></textarea>
 								<!-- End TinyMCE Editor -->
 
 								<div
@@ -51,7 +58,7 @@
 										id="btnList">
 										<i class="bi bi-list-task"></i>
 									</button>
-									<button type="button" class="btn btn-lg btn-primary">
+									<button type="submit" class="btn btn-lg btn-primary">
 										<i class="bi bi-pencil"></i>
 									</button>
 								</div>
@@ -97,9 +104,7 @@
 
 	<script type="text/javascript">
 		document.getElementById("btnList").onclick = function() {
-			let form = document.querySelector("[name=form]");
-			form.action = "/v1/infra/diary/diaryUsrList";
-			form.submit();
+			window.location.href = "/v1/infra/diary/diaryUsrList";
 		}
 	</script>
 

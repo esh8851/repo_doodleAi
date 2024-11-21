@@ -7,4 +7,18 @@
 
 	<resultMap type="com.tele.infra.qna.QnaDto" id="resultMapObj"></resultMap>
 	
+	<select id="selectList" resultMap="resultMapObj">
+		select aa.* from (
+			ifqnaSeq,
+			ifqnaOrder,
+			ifqnaTitle,
+			ifqnaCate,
+			ifqnaDesc,
+			ifqnaDateTime,
+			ifqnaDateTimeEdit,
+			member_ifmmSeq
+		) aa
+		limit #{rowNumToShow} offset #{startRnumForMysql}
+	</select>
+	
 </mapper>

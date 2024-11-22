@@ -16,12 +16,18 @@ public class QnaController {
 	public String qnaUsrView(Model model) {
 		List<QnaDto> qnas = qnaService.selectList();
 		model.addAttribute("list", qnas);
-		return "/usr/v1/infra/qna/qnaUsrList";
+		return "usr/v1/infra/qna/qnaUsrList";
 	}
 
 	@RequestMapping(value="/v1/infra/qna/qnaUsrForm")
-	public String qnaUsrFrom() {
-		return "/usr/v1/infra/qna/qnaUsrForm";
+	public String qnaUsrFrom(QnaDto qnaDto) {
+		return "usr/v1/infra/qna/qnaUsrForm";
+	}
+	
+	@RequestMapping(value="/v1/infra/qna/qnaUsrInst")
+	public String qnaUsrInst(QnaDto qnaDto) {
+		qnaService.insert(qnaDto);
+		return "redirect:/usr/v1/infra/qna/qnaUsrList";
 	}
 	
 }

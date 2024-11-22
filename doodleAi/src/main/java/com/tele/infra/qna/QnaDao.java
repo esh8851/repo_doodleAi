@@ -9,4 +9,6 @@ public interface QnaDao {
 	
 	List<QnaDto> selectList();
 	
+	public int insert(QnaDto qnaDto);
+	
 }

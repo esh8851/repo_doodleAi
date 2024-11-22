@@ -8,8 +8,23 @@
 	<resultMap type="com.tele.infra.qna.QnaDto" id="resultMapObj"></resultMap>
 	
 	<select id="selectList" resultMap="resultMapObj">
-		select aa.* from (
-			ifqnaSeq,
+		select 
+			a.ifqnaSeq,
+			a.ifqnaOrder,
+			a.ifqnaTitle,
+			a.ifqnaCate,
+			a.ifqnaDesc,
+			a.ifqnaDateTime,
+			a.ifqnaDateTimeEdit,
+			a.member_ifmmSeq
+		from
+			qna a
+		where 1 = 1
+		Order By a.ifqnaSeq desc
+	</select>
+	
+	<insert id="insert">
+		insert into qna(
 			ifqnaOrder,
 			ifqnaTitle,
 			ifqnaCate,
@@ -17,8 +32,15 @@
 			ifqnaDateTime,
 			ifqnaDateTimeEdit,
 			member_ifmmSeq
-		) aa
-		limit #{rowNumToShow} offset #{startRnumForMysql}
-	</select>
+		)values(
+			#{ifqnaSeq},
+			#{ifqnaTitle},
+			#{ifqnaCate},
+			#{ifqnaDesc},
+			#{ifqnaDateTime},
+			#{ifqnaDateTimeEdit},
+			#{member_ifmmSeq}
+		)
+	</insert>
 	
 </mapper>

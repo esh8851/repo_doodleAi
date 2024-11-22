@@ -67,24 +67,27 @@
 <!-- 							<img src="/usr/v1/template/NiceAdmin-1.0.0/assets/img/4.jpg" alt="설명 텍스트" /> -->
 						<div class="card-body">
 							<h5 class="card-title">질문하기</h5>
-								<from name="form" method="post" action="/v1/infra/act/actUsrForm">
-									<input type="text" class="qnaTitle" id="qnaTitle" name="qnaTitle" placeholder="제목을 입력해주세요.">
-									<select class="qnaCategory" id="qnaCategory" name="qnaCategory">
-										<option>선택해주세요.</option>
-										<option>문의</option>
-										<option>개인 정보</option>
-										<option>오류 / 버그</option>
-										<option>서비스</option>
+								<form id="form" name="form" method="post" action="/v1/infra/qna/qnaUsrInst">
+									<input type="hidden" id="ifqnaSeq" name="ifqnaSeq" autocomplete="off">
+									<input type="text" class="qnaTitle" id="ifqnaTitle" name="ifqnaTitle" placeholder="제목을 입력해주세요." autocomplete="off">
+									<select class="qnaCategory" id="ifqnaCategory" name="ifqnaCategory">
+										<option value="0" readonly>카테고리 선택</option>
+										<option value="1">문의</option>
+										<option value="2">계정문의</option>
+										<option value="3">서비스문의</option>
 									</select>
-									<textarea class="qnatext" placeholder="내용을 입력해주세요."></textarea>
-								</from>
+									<textarea class="qnatext" id="ifqnaDesc" name="ifqnaDesc" placeholder="내용을 입력해주세요." autocomplete="off"></textarea>
+									<input type="text" name="member_ifmmSeq" autocomplete="off"  placeholder="1~4 입력 ㄱㄱ 멤버시퀀스임">
+									<input type="hidden" id="ifqnaDatetime" name="ifqnaDatetime" autocomplete="off">
+									<input type="hidden" id="ifqnaDatetimeEdit" name="ifqnaDatetimeEdit" autocomplete="off">
+								</form>
 								<div class="d-flex justify-content-between mt-3">
 									<button type="button" class="btn btn-outline-primary" id="btnList" style="background-color: pink; color: black; border-color: pink;">
 									<i class="bi bi-list-task"> 목록</i>
 									</button>
 									<div class="row">
 								 		<div class="col d-flex justify-content-end">
-									  		<button type="button" style="background:pink; color:black;" class="btn btn-black" id="btnForm">
+									  		<button type="button" id="btnInsert" style="background:pink; color:black;" class="btn btn-black">
 									  	  	<i class="bi bi-pencil" style="color:black;"></i> 글쓰기
 									  		</button>
 								 	 	</div>
@@ -120,6 +123,13 @@
   <script>
 	document.getElementById("btnList").onclick = function() {
 		window.location = "/v1/infra/qna/qnaUsrList"
+	}
+  </script>
+  <script>
+	document.getElementById("btnInsert").onclick = function(){
+    	let form = document.querySelector("form[name=form]");
+    	form.action = "/v1/infra/qna/qnaUsrInst"; 
+    	form.submit(); 
 	}
   </script>
 

@@ -11,7 +11,7 @@ public class QnaDto {
     private String ifqnaDesc;
 	private Date ifqnaDateTime;
 	private Date ifqnaDateTimeEdit;
-	private String  member_ifmmSeq;
+	private String member_ifmmSeq;
 	
 	//----- get set
 	

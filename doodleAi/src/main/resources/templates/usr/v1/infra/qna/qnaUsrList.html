@@ -53,49 +53,28 @@
 					            <table class="table" style="max-width: 1150px; width: 100%; margin-bottom: 50px; margin-left: 80px; opacity: 0.6;"> 
 					                <thead>
 					                	<hr style="margin-top:30px; margin-left:80px; width: 1150px;">
-					                    <tr>
+<!-- 					                    <tr> -->
+<!-- 					                   		<th scope="col">No</th> -->
+<!-- 						                  	<th scope="col">카테고리</th> -->
+<!-- 						                 	<th scope="col">제목</th> -->
+<!-- 						                 	<th scope="col">작성자</th> -->
+<!-- 		  			                        <th scope="col">작성일</th> -->
+<!-- 							            </tr> -->
+					                </thead>
+					                <tbody>
+					                	<tr>
 					                   		<th scope="col">No</th>
 						                  	<th scope="col">카테고리</th>
 						                 	<th scope="col">제목</th>
 						                 	<th scope="col">작성자</th>
 		  			                        <th scope="col">작성일</th>
 							            </tr>
-					                </thead>
-					                <tbody>
-					                	<tr>
-					                    	<th scope="row">1</th>
-					                    	<td>질문</td>
-					                    	<td>제목 적는 곳</td>
-					                    	<td>아이디</td>
-					                    	<td>2016-05-25</td>
-					                  	</tr>
-					                  	<tr>
-					                    	<th scope="row">2</th>
-					                    	<td>오류</td>
-					                    	<td>제목 적는 곳</td>
-					                    	<td>아이디</td>
-					                    	<td>2014-12-05</td>
-					                  	</tr>
-					                  	<tr>
-					                    	<th scope="row">3</th>
-					                    	<td>계정</td>
-					                    	<td>제목 적는 곳</td>
-					                    	<td>아이디</td>
-					                    	<td>2011-08-12</td>
-					                  	</tr>
-					                  	<tr>
-					                    	<th scope="row">4</th>
-					                    	<td>질문</td>
-					                    	<td>제목 적는 곳</td>
-					                    	<td>아이디</td>
-					                    	<td>2012-06-11</td>
-					                  	</tr>
-					                  	<tr>
-					                    	<th scope="row">5</th>
+					                	<tr th:each="list : ${list}">
+					                    	<td scope="row" th:text="${list.ifqnaOrder}"></th>
 					                    	<td>카테고리</td>
-					                    	<td>제목 적는 곳</td>
-					                    	<td>아이디</td>
-					                    	<td>2011-04-19</td>
+					                    	<td th:text="${list.ifqnaTitle}"></td>
+					                    	<td th:text="${list.ifqnaDesc}"></td>
+					                    	<td th:text="${#dates.format(list.ifqnaDateTime, 'yyyy-MM-dd')}"></td>
 					                  	</tr>
 					              </tbody>
 					          </table>

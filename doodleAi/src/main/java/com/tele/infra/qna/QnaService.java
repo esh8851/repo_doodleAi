@@ -14,4 +14,8 @@ public class QnaService {
 	List<QnaDto> selectList(){
 		return qnaDao.selectList();
 	}
+	
+	public int insert(QnaDto qnaDto) {
+		return qnaDao.insert(qnaDto);
+	}
 }

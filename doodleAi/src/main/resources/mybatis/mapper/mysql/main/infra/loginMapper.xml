@@ -7,4 +7,55 @@
 
 	<resultMap type="com.tele.infra.login.LoginDto" id="resultMapObj"></resultMap>
 	
+	<select id="selectOneId" resultMap="resultMapObj">
+		select
+			a.ifmmSeq
+		    ,a.ifmmId
+		from
+			member a
+		where 1=1
+			AND a.ifmmSeq = #{ifmmSeq}
+	</select>
+	
+	<select id="selectOneLogin" resultMap="resultMapObj">
+		select
+			a.ifmmSeq
+			,a.ifmmName
+		    ,a.ifmmId
+		    ,a.ifmmPassword
+		from
+			member a
+		where a.ifmmId= #{ifmmId} and a.ifmmPassword = #{ifmmPassword}
+	</select>
+	  
+	<update id="update">
+		update member
+	  	set
+			ifmmName = #{name}
+		    ,ifmmNickName = #{nickName}
+		    ,ifmmId = #{id}
+		    ,ifmmPassword = #{password}
+		    ,ifmmEmail = #{email}
+		    ,ifmmBirth = #{birthday}
+		    ,ifmmGender = #{gender}
+		    ,ifmmPhone = #{telephone}
+		    ,ifmmDatetimeEdit = now()
+	  	where 1=1
+	  		and ifmmSeq = #{ifmmSeq}
+	</update>
+	  
+	<update id="uelete">
+		update member
+	  	set
+	  		ifmmDelNy = 1
+	  	where 1=1
+	  		and ifmmSeq = #{ifmmSeq}
+	</update>
+	  
+	<delete id="delete">
+		delete from member
+	  	where 1=1
+	  		and ifmmSeq = #{ifmmSeq}
+	</delete>
+	
 </mapper>

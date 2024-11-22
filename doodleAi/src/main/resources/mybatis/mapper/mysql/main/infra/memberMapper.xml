@@ -7,4 +7,151 @@
 
 	<resultMap type="com.tele.infra.member.MemberDto" id="resultMapObj"></resultMap>
 	
+	<sql id="selectCommon">
+		from
+			member a
+		where 1=1
+			<if test="shDelNy != null and !shDelNy.equals('')">AND ifmmDelNy = #{shDelNy}</if>
+			
+			<choose>
+				<when test="shOptionDate == 1">AND a.ifmmDateTime BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+				<when test="shOptionDate == 2">AND a.ifmmDateTimeEdit BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+			</choose>
+			
+			<choose>
+				<when test="shOption == 1">AND ifmmSeq = #{shValue}</when>
+				<when test="shOption == 2">AND ifmmName LIKE CONCAT('%',#{shValue},'%')</when>
+				<when test="shOption == 3">AND ifmmId LIKE CONCAT('%',#{shValue},'%')</when>
+				<when test="shOption == 4">AND ifmmPassword LIKE CONCAT('%',#{shValue},'%')</when>
+			</choose>
+	</sql>
+	
+	<select id="selectOneCount">
+		select count(*)
+		<include refid="selectCommon"></include>
+	</select>
+	
+	<select id = "selectList" resultMap = "resultMapObj">
+		select aa.* from (
+			select
+				a.ifmmSeq
+				,a.ifmmName
+			    ,a.ifmmNickName
+			    ,a.ifmmId
+			    ,a.ifmmPassword
+			    ,a.ifmmBirth
+			    ,a.ifmmGender
+			    ,a.ifmmPhone
+			    ,a.ifmmEmail
+			    ,a.ifmmUseNy
+			    ,a.ifmmDelNy
+			    ,a.ifmmOrder
+			    ,a.ifmmDateTime
+			    ,a.ifmmDateTimeEdit
+			<include refid="selectCommon"></include>
+			order by
+				a.ifmmSeq desc
+		) aa
+		limit #{rowNumToShow} offset #{startRnumForMysql}
+	</select>
+  	
+  	<insert id="insert">
+		insert into member (
+			ifmmName
+		    ,ifmmNickName
+		    ,ifmmId
+		    ,ifmmPassword
+		    ,ifmmBirth
+		    ,ifmmGender
+		    ,ifmmPhone
+		    ,ifmmEmail
+		    ,ifmmUseNy
+		    ,ifmmDelNy
+		    ,ifmmOrder
+		    ,ifmmDateTime
+		    ,ifmmDateTimeEdit
+		) values (
+			#{ifmmName}
+			,#{ifmmNickName}
+		    ,#{ifmmId}
+		    ,#{ifmmPassword}
+		    ,#{ifmmBirth}
+		    ,#{ifmmGender}
+		    ,#{ifmmPhone}
+		    ,#{ifmmEmail}
+		    ,1
+		    ,0
+		    ,1
+		    ,now()
+		    ,now()
+		)
+		<selectKey resultType="String" keyProperty="ifmmSeq" order="AFTER">
+				SELECT last_insert_id()
+		 </selectKey>
+	</insert>
+	  
+	<select id="selectOne" resultMap="resultMapObj">
+		select
+			a.ifmmSeq
+				,a.ifmmName
+			    ,a.ifmmNickName
+			    ,a.ifmmId
+			    ,a.ifmmPassword
+			    ,a.ifmmBirth
+			    ,a.ifmmGender
+			    ,a.ifmmPhone
+			    ,a.ifmmEmail
+			    ,a.ifmmUseNy
+			    ,a.ifmmDelNy
+			    ,a.ifmmOrder
+			    ,a.ifmmDateTime
+			    ,a.ifmmDateTimeEdit
+		from
+			member a
+		where 1=1
+			AND a.ifmmSeq = #{ifmmSeq}
+	</select>
+	
+	<select id="selectOneId" resultMap="resultMapObj">
+		select
+			a.ifmmSeq
+		    ,a.ifmmId
+		from
+			member a
+		where 1=1
+			AND a.ifmmSeq = #{ifmmSeq}
+	</select>
+	
+	
+	  
+	<update id="update">
+		update member
+	  	set
+			ifmmName = #{name}
+		    ,ifmmNickName = #{nickName}
+		    ,ifmmId = #{id}
+		    ,ifmmPassword = #{password}
+		    ,ifmmEmail = #{email}
+		    ,ifmmBirth = #{birthday}
+		    ,ifmmGender = #{gender}
+		    ,ifmmPhone = #{telephone}
+		    ,ifmmDatetimeEdit = now()
+	  	where 1=1
+	  		and ifmmSeq = #{ifmmSeq}
+	</update>
+	  
+	<update id="uelete">
+		update member
+	  	set
+	  		ifmmDelNy = 1
+	  	where 1=1
+	  		and ifmmSeq = #{ifmmSeq}
+	</update>
+	  
+	<delete id="delete">
+		delete from member
+	  	where 1=1
+	  		and ifmmSeq = #{ifmmSeq}
+	</delete>
+	
 </mapper>

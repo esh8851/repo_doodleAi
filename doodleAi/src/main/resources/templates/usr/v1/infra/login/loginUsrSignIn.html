@@ -7,7 +7,6 @@
 
   <main>
     <div class="container">
-
       <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
         <div class="container">
           <div class="row justify-content-center">
@@ -29,33 +28,33 @@
                     <p class="text-center small">아이디와 비밀번호를 입력해 주세요!</p>
                   </div>
 
-                  <form class="row g-3 needs-validation" novalidate>
+                  <form class="row g-3 needs-validation" name="form" id="form" method="post">
 
                     <div class="col-12">
-                      <label for="yourUsername" class="form-label">아이디</label>
+                      <label for="ifmmId" class="form-label">아이디</label>
                       <div class="input-group has-validation">
-                        <input type="text" name="username" class="form-control" id="yourUsername" required>
-                        <div class="invalid-feedback">Please enter your username.</div>
+                        <input type="text" name="ifmmId" class="form-control" id="ifmmId" required>
+                        <div class="invalid-feedback">Please enter your username.</div>	
                       </div>
                     </div>
 
                     <div class="col-12">
-                      <label for="yourPassword" class="form-label">비밀번호</label>
-                      <input type="password" name="password" class="form-control" id="yourPassword" required>
+                      <label for="ifmmPassword" class="form-label">비밀번호</label>
+                      <input type="password" name="ifmmPassword" class="form-control" id="ifmmPassword" required>
                       <div class="invalid-feedback">Please enter your password!</div>
                     </div>
 
                     <div class="col-12">
                       <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="remember" value="true" id="rememberMe">
+                        <input class="form-check-input" type="checkbox" value="true">
                         <label class="form-check-label" for="rememberMe">회원정보 기억하기</label>
                       </div>
                     </div>
                     <div class="col-12">
-                      <button class="btn btn-primary w-100" type="submit">로그인</button>
+                      <button id="btnDoodleAiLogin" class="btn btn-primary w-100" type="button">로그인</button>
                     </div>
                     <div class="col-12">
-                      <p class="small mb-0">계정을 잊으셨나요? <a href="pages-register.html">회원가입</a></p>
+                      <p class="small mb-0">계정을 잊으셨나요? <a href="/v1/infra/login/loginUsrSignUp">회원가입</a></p>
                     </div>
                   </form>
 
@@ -75,7 +74,6 @@
         </div>
 
       </section>
-
     </div>
   </main><!-- End #main -->
 
@@ -93,6 +91,86 @@
 
   <!-- Template Main JS File -->
   <script src="/usr/v1/template/NiceAdmin-1.0.0/assets/js/main.js"></script>
+  
+  <script type="text/javascript">
+		document.getElementById("btnDoodleAiLogin").onclick = function (){
+// 			const ifmmId = document.getElementById("ifmmId");
+// 			const ifmmIdValue = document.getElementById("ifmmId").value.trim();
+// 			const ifmmIdError = document.getElementById("ifmmIdError");
+			
+// 			var ifmmIdRegExp = /^[a-zA-Z][0-9a-zA-Z]{0,11}$/;
+// 			if(!ifmmIdRegExp.test(ifmmIdValue)){
+// 				ifmmIdError.innerText = "아이디를 입력해주세요.";
+// 				ifmmIdError.style.display="";
+// 				ifmmId.classList.add("is-invalid");
+// 				ifmmId.classList.remove("is-valid");
+// 				ifmmId.focus();
+// 				return false;
+// 		    } else {
+// 		    	ifmmIdError.style.display = "none";
+// 		    	ifmmId.classList.remove("is-invalid");
+// 		    	ifmmId.classList.add("is-valid");
+// 		    }
+			
+// 			const ifmmPassword = document.getElementById("ifmmPassword");
+// 			const ifmmPasswordValue = document.getElementById("ifmmPassword").value.trim();
+// 			const ifmmPasswordError = document.getElementById("ifmmPasswordError");
+			
+// 			var ifmmPasswordRegExp = /^(?=.*[a-zA-Z])(?=.*[!@])(?=.*[0-9]).{8,15}$/
+// 			if(!ifmmPasswordRegExp.test(ifmmPasswordValue)){
+// 				ifmmPasswordError.innerText = "비밀번호 입력해주세요.";
+// 				ifmmPasswordError.style.display="";
+// 				ifmmPassword.classList.add("is-invalid");
+// 				ifmmPassword.classList.remove("is-valid");
+// 				ifmmPassword.focus();
+// 				return false;
+// 		    } else {
+// 		    	ifmmPasswordError.style.display = "none";
+// 		    	ifmmPassword.classList.remove("is-invalid");
+// 		    	ifmmPassword.classList.add("is-valid");
+// 		    }
+			
+			$.ajax({
+				async: true 
+				,cache: false
+				,type: "post"
+				/* ,dataType:"json" */
+				,url: "/v1/infra/login/signinUsrProc"
+				/* ,data : $("#formLogin").serialize() */
+				,data : { "ifmmId" : $("#ifmmId").val(), "ifmmPassword" : $("#ifmmPassword").val()}
+				,success: function(response) {
+					if(response.rt == "success") {
+						if(response.changePwd == "true") {
+							location.href = "/v1/infra/index/indexUsrView";
+						} else {
+							location.href = "/v1/infra/index/indexUsrView";
+						}
+					} else {
+				 		document.getElementById("verticallyCenteredLabel").innerText = "확 인";
+				 		document.getElementById("verticallyCenteredLabel2").innerText = "아이디나 비밀번호가 틀렸습니다";
+				 		$("#verticallyCentered").modal("show");
+					}
+				}
+				,error : function(jqXHR, textStatus, errorThrown){
+					alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+				}
+			});	
+		}
+		
+		var input = document.getElementById("ifmmPassword");
+
+		input.addEventListener("keypress", function(event) {
+		  if (event.key === "Enter") {
+		    event.preventDefault();
+		    document.getElementById("btnDoodleAiLogin").click();
+		  }
+		});	
+		
+		
+		
+		
+		
+	</script>
 
 </body>
 

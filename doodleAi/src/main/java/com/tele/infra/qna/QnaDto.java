@@ -5,7 +5,6 @@ import java.util.Date;
 public class QnaDto {
 	
 	private String ifqnaSeq;
-	private Integer ifqnaOrder;
 	private String ifqnaTitle;
 	private Integer ifqnaCate;
     private String ifqnaDesc;
@@ -20,12 +19,6 @@ public class QnaDto {
 	}
 	public void setIfqnaSeq(String ifqnaSeq) {
 		this.ifqnaSeq = ifqnaSeq;
-	}
-	public Integer getIfqnaOrder() {
-		return ifqnaOrder;
-	}
-	public void setIfqnaOrder(Integer ifqnaOrder) {
-		this.ifqnaOrder = ifqnaOrder;
 	}
 	public String getIfqnaTitle() {
 		return ifqnaTitle;

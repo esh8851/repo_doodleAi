@@ -12,7 +12,7 @@ public class MemberController {
 	
 	@RequestMapping(value="/v1/infra/member/profileUsrView")
 	public String profileUsrView() {
-		return "/usr/v1/infra/member/profileUsrView";
+		return "usr/v1/infra/member/profileUsrView";
 	}
 	
 }

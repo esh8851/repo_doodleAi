@@ -8,7 +8,7 @@ public class SajeonController {
 	
 	@RequestMapping(value="/v1/infra/sajeon/sajeonUsrView")
 	public String sajeonUsrView() {
-		return "/usr/v1/infra/sajeon/sajeonUsrView";
+		return "usr/v1/infra/sajeon/sajeonUsrView";
 	}
 
 }

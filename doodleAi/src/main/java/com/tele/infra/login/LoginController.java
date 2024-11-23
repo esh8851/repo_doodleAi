@@ -19,12 +19,12 @@ public class LoginController {
 	
 	@RequestMapping(value="/v1/infra/login/loginUsrSignIn")
 	public String loginUsrSignIn() {
-		return "/usr/v1/infra/login/loginUsrSignIn";
+		return "usr/v1/infra/login/loginUsrSignIn";
 	}
 	
 	@RequestMapping(value="/v1/infra/login/loginUsrSignUp")
 	public String loginUsrSignUp() {
-		return "/usr/v1/infra/login/loginUsrSignUp";
+		return "usr/v1/infra/login/loginUsrSignUp";
 	}
 	
 	@ResponseBody

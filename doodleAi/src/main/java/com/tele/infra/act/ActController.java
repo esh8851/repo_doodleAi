@@ -21,7 +21,7 @@ public class ActController {
     
     @RequestMapping(value = "/v1/infra/act/actUsrList")
     public String actUsrList() {
-        return "/usr/v1/infra/act/actUsrList";
+        return "usr/v1/infra/act/actUsrList";
     }
     
     @RequestMapping(value = "/v1/infra/act/actUsrForm", method = RequestMethod.GET)
@@ -35,7 +35,7 @@ public class ActController {
 
         // 대화 이력을 모델에 추가
         model.addAttribute("conversationHistory", conversationHistory);
-        return "/usr/v1/infra/act/actUsrForm";
+        return "usr/v1/infra/act/actUsrForm";
     }
 
     @RequestMapping(value = "/v1/infra/act/actUsrForm", method = RequestMethod.POST)
@@ -54,7 +54,7 @@ public class ActController {
         if (userInput == null || userInput.trim().isEmpty()) {
             model.addAttribute("errorMessage", "입력값이 없습니다. 다시 시도해 주세요.");
             model.addAttribute("conversationHistory", conversationHistory);
-            return "/usr/v1/infra/act/actUsrForm";
+            return "usr/v1/infra/act/actUsrForm";
         }
 
         // 사용자 입력을 대화 이력에 추가
@@ -72,6 +72,6 @@ public class ActController {
         // 모델에 대화 이력을 전달
         model.addAttribute("conversationHistory", conversationHistory);
 
-        return "/usr/v1/infra/act/actUsrForm";
+        return "usr/v1/infra/act/actUsrForm";
     }
 }

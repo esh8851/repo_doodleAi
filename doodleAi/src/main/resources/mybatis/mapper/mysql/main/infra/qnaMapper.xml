@@ -10,7 +10,6 @@
 	<select id="selectList" resultMap="resultMapObj">
 		select 
 			a.ifqnaSeq,
-			a.ifqnaOrder,
 			a.ifqnaTitle,
 			a.ifqnaCate,
 			a.ifqnaDesc,
@@ -25,7 +24,6 @@
 	
 	<insert id="insert">
 		insert into qna(
-			ifqnaOrder,
 			ifqnaTitle,
 			ifqnaCate,
 			ifqnaDesc,
@@ -33,12 +31,11 @@
 			ifqnaDateTimeEdit,
 			member_ifmmSeq
 		)values(
-			#{ifqnaSeq},
 			#{ifqnaTitle},
 			#{ifqnaCate},
 			#{ifqnaDesc},
-			#{ifqnaDateTime},
-			#{ifqnaDateTimeEdit},
+			now(),
+			now(),
 			#{member_ifmmSeq}
 		)
 	</insert>

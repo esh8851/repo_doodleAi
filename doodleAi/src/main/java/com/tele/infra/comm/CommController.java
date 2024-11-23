@@ -12,7 +12,7 @@ public class CommController {
 	
 	@RequestMapping(value="/v1/infra/comm/commUsrView")
 	public String commUsrView() {
-		return "/usr/v1/infra/comm/commUsrView";
+		return "usr/v1/infra/comm/commUsrView";
 	}
 	
 }

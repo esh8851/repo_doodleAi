@@ -12,12 +12,12 @@ public class EmotionController {
 	
 	@RequestMapping(value="/v1/infra/emotion/emotionUsrList")
 	public String emotionUsrList() {
-		return "/usr/v1/infra/emotion/emotionUsrList";
+		return "usr/v1/infra/emotion/emotionUsrList";
 	}
 	
 	@RequestMapping(value="/v1/infra/emotion/emotionUsrForm")
 	public String emotionUsrForm() {
-		return "/usr/v1/infra/emotion/emotionUsrForm";
+		return "usr/v1/infra/emotion/emotionUsrForm";
 	}
 
 }

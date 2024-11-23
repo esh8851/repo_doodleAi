@@ -70,11 +70,11 @@
 								<form id="form" name="form" method="post" action="/v1/infra/qna/qnaUsrInst">
 									<input type="hidden" id="ifqnaSeq" name="ifqnaSeq" autocomplete="off">
 									<input type="text" class="qnaTitle" id="ifqnaTitle" name="ifqnaTitle" placeholder="제목을 입력해주세요." autocomplete="off">
-									<select class="qnaCategory" id="ifqnaCategory" name="ifqnaCategory">
+									<select class="qnaCategory" id="ifqnaCate" name="ifqnaCate">
 										<option value="0" readonly>카테고리 선택</option>
-										<option value="1">문의</option>
-										<option value="2">계정문의</option>
-										<option value="3">서비스문의</option>
+										<option value="1" name="ifqnaCate">문의</option>
+										<option value="2" name="ifqnaCate">계정문의</option>
+										<option value="3" name="ifqnaCate">서비스문의</option>
 									</select>
 									<textarea class="qnatext" id="ifqnaDesc" name="ifqnaDesc" placeholder="내용을 입력해주세요." autocomplete="off"></textarea>
 									<input type="text" name="member_ifmmSeq" autocomplete="off"  placeholder="1~4 입력 ㄱㄱ 멤버시퀀스임">

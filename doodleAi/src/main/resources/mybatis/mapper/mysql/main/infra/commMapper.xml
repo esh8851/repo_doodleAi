@@ -7,4 +7,24 @@
 
 	<resultMap type="com.tele.infra.comm.CommDto" id="resultMapObj"></resultMap>
 	
+	<select id="selectList" resultMap="resultMapObj">
+		select
+			a.ifdrSeq,
+			a.ifdrTitle,
+			a.ifdrDesc,
+			a.ifdrDateTime,
+			a.ifdrDateTimeEdit,
+			a.ifdrOpenNy,
+			a.member_ifmmSeq,
+			b.ifmmSeq,
+			b.ifmmId,
+			b.ifmmName,
+			b.ifmmNickName
+		from
+			diary a
+		left join
+			member b on b.ifmmSeq = a.member_ifmmSeq 
+		where 1=1
+	</select>
+	
 </mapper>

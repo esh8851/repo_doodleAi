@@ -7,21 +7,40 @@
 
 	<resultMap type="com.tele.infra.qna.QnaDto" id="resultMapObj"></resultMap>
 	
-	<select id="selectList" resultMap="resultMapObj">
-		select 
-			a.ifqnaSeq,
-			a.ifqnaTitle,
-			a.ifqnaCate,
-			a.ifqnaDesc,
-			a.ifqnaDateTime,
-			a.ifqnaDateTimeEdit,
-			a.member_ifmmSeq
+	<sql id="selectCommon">
 		from
 			qna a
-		where 1 = 1
-		Order By a.ifqnaSeq desc
+		left join
+			member b on b.ifmmSeq = a.member_ifmmSeq
+		where 1=1
+		
+		<if test="shTitle != null and shTitle != ''">AND a.ifqnaTitle LIKE CONCAT('%', #{shTitle}, '%')</if>
+	</sql>
+	
+	<select id="selectOneCount" resultType="Integer">
+		SELECT COUNT(*)
+		<include refid="selectCommon"></include>
 	</select>
 	
+	<select id="selectList" resultMap="resultMapObj">
+    select aa.* from (
+        select
+            a.ifqnaSeq,
+            a.ifqnaTitle,
+            a.ifqnaCate,
+            a.ifqnaDesc,
+            a.ifqnaDateTime,
+            a.ifqnaDateTimeEdit,
+            a.member_ifmmSeq,
+            b.ifmmSeq,
+            b.ifmmId,
+            b.ifmmNickName
+        <include refid="selectCommon"></include>
+        Order By a.ifqnaSeq desc
+    		) aa
+    	limit #{rowNumToShow} offset #{startRnumForMysql}
+	</select>
+
 	<insert id="insert">
 		insert into qna(
 			ifqnaTitle,
@@ -38,6 +57,9 @@
 			now(),
 			#{member_ifmmSeq}
 		)
+		<selectKey resultType="String" keyProperty="ifqnaSeq" order="AFTER">
+			SELECT last_Insert_id()
+		</selectKey>
 	</insert>
 	
 </mapper>

@@ -7,8 +7,10 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface QnaDao {
 	
-	List<QnaDto> selectList();
+	List<QnaDto> selectList(QnaVo qnaVo);
 	
 	public int insert(QnaDto qnaDto);
+	
+	public int selectOneCount(QnaVo qnaVo);
 	
 }

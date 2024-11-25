@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class QnaController {
@@ -13,9 +14,10 @@ public class QnaController {
 	private QnaService qnaService;
 	
 	@RequestMapping(value="/v1/infra/qna/qnaUsrList")
-	public String qnaUsrView(Model model) {
-		List<QnaDto> qnas = qnaService.selectList();
+	public String qnaUsrList(Model model,@ModelAttribute("vo") QnaVo qnaVo) {
+		List<QnaDto> qnas = qnaService.selectList(qnaVo);
 		model.addAttribute("list", qnas);
+		qnaVo.setParamsPaging(qnaService.selectOneCount(qnaVo));
 		return "usr/v1/infra/qna/qnaUsrList";
 	}
 
@@ -27,7 +29,7 @@ public class QnaController {
 	@RequestMapping(value="/v1/infra/qna/qnaUsrInst")
 	public String qnaUsrInst(QnaDto qnaDto) {
 		qnaService.insert(qnaDto);
-		return "redirect:/usr/v1/infra/qna/qnaUsrList";
+		return "redirect:/v1/infra/qna/qnaUsrList";
 	}
 	
 }

@@ -11,11 +11,16 @@ public class QnaService {
 	@Autowired
 	private QnaDao qnaDao;
 	
-	List<QnaDto> selectList(){
-		return qnaDao.selectList();
+	List<QnaDto> selectList(QnaVo qnaVo){
+		return qnaDao.selectList(qnaVo);
 	}
 	
 	public int insert(QnaDto qnaDto) {
 		return qnaDao.insert(qnaDto);
 	}
+	
+	public int selectOneCount(QnaVo qnaVo) {
+		return qnaDao.selectOneCount(qnaVo);
+	}
+	
 }

@@ -22,82 +22,84 @@
 			<h1>QnA</h1>
 			<nav>
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="/v1/infra/index/indexUsrView">Home</a></li>
+					<li class="breadcrumb-item"><a href="/v1/infra/qna/qnaUsrList">Home</a></li>
 					<li class="breadcrumb-item active">QnA</li>
 				</ol>
 			</nav>
 		</div>
 		<!-- End Page Title -->
 		<section class="section dashboard">
-			<form name="form" method="post" action="/v1/infra/diary/diaryUsrList">
 				<div class="row">
 					<div class="col-12">
 						<div class="card" style="position: relative; background-image: url('/usr/v1/template/NiceAdmin-1.0.0/assets/img/8.jpg'); background-size: contain; background-position: center; color: white; min-height: 300px;">
 				        	<div class="card-body">
-				            <h1 style="color:black; margin-left: 530px; margin-top:30px; margin-bottom:20px;">질문 게시판</h1>
-								<div class="row d-flex justify-content-center">
-									<div class="col-sm-3">
-							        	<input type="text" class="form-control" placeholder="검색어" style="opacity: 0.8;">
-							    	</div>
-							    	<div class="col-sm-auto d-flex justify-content-start">
-							        	<button type="button" class="btn btn-outline-black border-dark">
-							            	<i class="bi bi-search"></i>
-							        	</button>
-							        	<button type="button" class="btn btn-outline-black border-black">
-							            	<i class="bi bi-arrow-repeat"></i>
-							        	</button>
-							    	</div>
-								</div>
+				        	<form method="post" action="/v1/infra/qna/qnaUsrList" name="formList">
+					        	<input type="hidden" name="thisPage" th:value="${vo.thisPage}" default="1"/>
+								<input type="hidden" id="rowNumToShow" name="rowNumToShow" th:value="${vo.rowNumToShow}"/>
+					            <h1 style="color:black; margin-left: 530px; margin-top:30px; margin-bottom:20px;">질문 게시판</h1>
+									<div class="row d-flex justify-content-center">
+										<div class="col-sm-3">
+								        	<input type="text" id="shTitle" name="shTitle" class="form-control" placeholder="제목 검색" style="opacity: 0.8;" autocomplete="off">
+								    	</div>
+								    	<div class="col-sm-auto d-flex justify-content-start">
+								        	<button type="submit" id="btnSearch" class="btn btn-outline-black border-dark">
+								            	<i class="bi bi-search"></i>
+								        	</button>
+								        	<button type="button" id="btnReload" class="btn btn-outline-black border-black">
+								            	<i class="bi bi-arrow-repeat"></i>
+								        	</button>
+								    	</div>
+									</div>
 
 				              <!-- Default Table -->
 					            <table class="table" style="max-width: 1150px; width: 100%; margin-bottom: 50px; margin-left: 80px; opacity: 0.6;"> 
 					                <thead>
 					                	<hr style="margin-top:30px; margin-left:80px; width: 1150px;">
-<!-- 					                    <tr> -->
-<!-- 					                   		<th scope="col">No</th> -->
-<!-- 						                  	<th scope="col">카테고리</th> -->
-<!-- 						                 	<th scope="col">제목</th> -->
-<!-- 						                 	<th scope="col">작성자</th> -->
-<!-- 		  			                        <th scope="col">작성일</th> -->
-<!-- 							            </tr> -->
+					                		<tr>
+<!--                                             	<th colspan="4"> -->
+<!--                                                 	<span class="fs-5" th:text="'Total: '+${vo.totalRows}"></span> -->
+<!--                                                 </th> -->
+                                                <th colspan="5">
+                                                	<span style="float: right;">
+                                                    	<select class="form-select" aria-label="Default select example"
+                                                        	style="width: 150px;" id="changeRowNum" name="changeRowNum" >
+                                                        	<option value="10" th:selected="${vo.rowNumToShow eq 10}">10</option>
+                                                            <option value="15" th:selected="${vo.rowNumToShow eq 15}">15</option>
+                                                            <option value="20" th:selected="${vo.rowNumToShow eq 20}">20</option>
+                                                            <option value="25" th:selected="${vo.rowNumToShow eq 25}">25</option>
+                                                        </select>
+                                                    </span>
+                                                </th>
+                                            </tr>
 					                </thead>
 					                <tbody>
 					                	<tr>
 					                   		<th scope="col">No</th>
 						                  	<th scope="col">카테고리</th>
 						                 	<th scope="col">제목</th>
-						                 	<th scope="col">작성자</th>
+						                 	<th scope="col">닉네임</th>
 		  			                        <th scope="col">작성일</th>
 							            </tr>
 					                	<tr th:each="list : ${list}">
-					                    	<td scope="row"></th>
+					                    	<td th:text="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + listStat.index)}"></td>
 					                    	<td>카테고리</td>
 					                    	<td th:text="${list.ifqnaTitle}"></td>
-					                    	<td th:text="${list.ifqnaDesc}"></td>
+					                    	<td th:text="${list.ifmmNickName}"></td>
 					                    	<td th:text="${#dates.format(list.ifqnaDateTime, 'yyyy-MM-dd')}"></td>
 					                  	</tr>
 					              </tbody>
 					          </table>
-				              <!-- Pagination with icons -->
-					          <nav aria-label="Page navigation example" style="margin-left: 550px; margin-top:100px; opacity: 0.7;">
-					    	      <ul class="pagination">
-					    	          <li class="page-item">
-					                      <a class="page-link" href="#" aria-label="Previous">
-					                          <span aria-hidden="true">&laquo;</span>
-					                      </a>
-					                  </li>
-					                      <li class="page-item"><a class="page-link" href="#">1</a></li>
-					                      <li class="page-item"><a class="page-link" href="#">2</a></li>
-					                      <li class="page-item"><a class="page-link" href="#">3</a></li>
-					                      <li class="page-item">
-					                      <a class="page-link" href="#" aria-label="Next">
-					                      	<span aria-hidden="true">&raquo;</span>
-					                      </a>
-					                  </li>
-					              </ul>
-					          </nav>
-					          <!-- End Pagination with icons -->
+					          <!--페이지네이션 시작-->
+					          <div aria-label="...">
+                              	  <ul class="pagination justify-content-center " style="opacity: 0.7; ">
+                                  	  <li th:if="${vo.startPage gt vo.pageNumToShow}" class="page-item" style="cursor: pointer;"><a class="page-link" href="javascript:goList(${vo.startPage - 1})" th:attr="onclick=|goList('${vo.startPage - 1}')|"><i class="fa-solid fa-angle-left"></i></a></li>
+                                      <li th:each="num: ${#numbers.sequence(vo.startPage, vo.endPage)}" th:classappend="${num eq vo.thisPage} ? active : ''" class="page-item" style="cursor: pointer;"><a class="page-link" th:attr="onclick=|goList('${num}')|" th:text="${num}">${i.index}</a></li>
+                                      <li th:if="${vo.endPage ne vo.totalPages}" class="page-item" style="cursor: pointer;"><a class="page-link" th:attr="onclick=|goList('${vo.endPage + 1}')|"><i class="fa-solid fa-angle-right"></i></a></li>
+                                  </ul>
+                              </div>
+                              <!--페이지네이션 끝-->
 					          <!-- End Default Table Example -->
+					          </form>
 					      </div>
 					  </div>
 					  <div class="row">
@@ -109,7 +111,6 @@
 					  </div>
 				  </div>
 			  </div>
-		  </form>
 	  </section>
 	</main>
 	<!-- End #main -->
@@ -138,7 +139,25 @@
   		window.location = "/v1/infra/qna/qnaUsrForm";
   	}
   </script>
-  
+  <script>
+  goList = function(thisPage) {
+	    console.log("goList called with thisPage:", thisPage);
+	    
+	    document.querySelector("input[name=thisPage]").value = thisPage;
+	    document.querySelector("form[name=formList]").action = "/v1/infra/qna/qnaUsrList";
+	    document.querySelector("form[name=formList]").submit();
+	}
+	document.getElementById("changeRowNum").onchange = function () {
+	    document.getElementById("rowNumToShow").value = document.getElementById("changeRowNum").value;
+	    formList.action = "/v1/infra/qna/qnaUsrList";
+	    formList.submit();
+	}
+  </script>
+  <script>
+		document.getElementById("btnReload").onclick = function (){
+			window.location = "/v1/infra/qna/qnaUsrList";
+		}
+  </script>
 </body>
 
 </html>

@@ -12,6 +12,11 @@ public class QnaDto {
 	private Date ifqnaDateTimeEdit;
 	private String member_ifmmSeq;
 	
+	//member
+	private String ifmmSeq;
+	private String ifmmNickName;
+	private String ifmmId;
+	
 	//----- get set
 	
 	public String getIfqnaSeq() {
@@ -55,6 +60,24 @@ public class QnaDto {
 	}
 	public void setMember_ifmmSeq(String member_ifmmSeq) {
 		this.member_ifmmSeq = member_ifmmSeq;
+	}
+	public String getIfmmSeq() {
+		return ifmmSeq;
+	}
+	public void setIfmmSeq(String ifmmSeq) {
+		this.ifmmSeq = ifmmSeq;
+	}
+	public String getIfmmNickName() {
+		return ifmmNickName;
+	}
+	public void setIfmmNickName(String ifmmNickName) {
+		this.ifmmNickName = ifmmNickName;
+	}
+	public String getIfmmId() {
+		return ifmmId;
+	}
+	public void setIfmmId(String ifmmId) {
+		this.ifmmId = ifmmId;
 	}
 	
 }

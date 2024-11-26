@@ -9,5 +9,6 @@ public interface CommDao {
 	
 	List<CommDto> selectList();
 	
+	public CommDto selectOne(CommDto commDto);
 	
 }

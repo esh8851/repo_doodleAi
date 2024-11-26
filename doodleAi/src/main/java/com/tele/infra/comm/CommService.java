@@ -15,4 +15,8 @@ public class CommService {
 		return commDao.selectList();
 	}
 	
+	public CommDto selectOne(CommDto commDto) {
+		return commDao.selectOne(commDto);
+	}
+	
 }

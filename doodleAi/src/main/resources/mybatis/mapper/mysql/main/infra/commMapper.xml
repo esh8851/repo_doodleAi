@@ -25,6 +25,28 @@
 		left join
 			member b on b.ifmmSeq = a.member_ifmmSeq 
 		where 1=1
+			and a.ifdrOpenNy = 0
+	</select>
+	
+	<select id="selectOne" resultMap="resultMapObj">
+		select
+			a.ifdrSeq,
+			a.ifdrTitle,
+			a.ifdrDesc,
+			a.ifdrDateTime,
+			a.ifdrDateTimeEdit,
+			a.ifdrOpenNy,
+			a.member_ifmmSeq,
+			b.ifmmSeq,
+			b.ifmmId,
+			b.ifmmName,
+			b.ifmmNickName
+		from
+			diary a
+		left join
+			member b on b.ifmmSeq = a.member_ifmmSeq 
+		where 1=1
+			and ifdrSeq = #{ifdrSeq}
 	</select>
 	
 </mapper>

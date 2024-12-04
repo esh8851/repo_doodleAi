@@ -48,17 +48,20 @@
 								<div
 									class="form-check form-switch d-flex justify-content-end mt-3">
 									<input class="form-check-input" type="checkbox"
-										id="flexSwitchCheckChecked" checked=""> <label
-										class="form-check-label ms-1" for="flexSwitchCheckChecked">일기
+										id="ifdrOpenNy" name="ifdrOpenNy" value="1"> <label
+										class="form-check-label ms-1" for="ifdrOpenNy">일기
 										공개</label>
 								</div>
+								
+								<input type="hidden" name="member_ifmmSeq" id="member_ifmmSeq" th:value="${session.sessSeqUsr}"/>
+								<input type="hidden" name="ifdrOpenNy" value="0">
 
 								<div class="d-flex justify-content-between mt-3">
 									<button type="button" class="btn btn-lg btn-outline-primary"
 										id="btnList">
 										<i class="bi bi-list-task"></i>
 									</button>
-									<button type="submit" class="btn btn-lg btn-primary">
+									<button type="button" class="btn btn-lg btn-primary" id="btnSubmit">
 										<i class="bi bi-pencil"></i>
 									</button>
 								</div>
@@ -105,6 +108,22 @@
 	<script type="text/javascript">
 		document.getElementById("btnList").onclick = function() {
 			window.location.href = "/v1/infra/diary/diaryUsrList";
+		}
+	</script>
+	
+	<script type="text/javascript">
+		document.getElementById("btnSubmit").onclick = function() {
+			
+			var checkbox = document.getElementById('ifdrOpenNy');
+	        if (checkbox.checked) {
+	            document.querySelector('input[name="ifdrOpenNy"]').value = "1";
+	        } else {
+	            document.querySelector('input[name="ifdrOpenNy"]').value = "0";
+	        }
+			
+			let form = document.querySelector("[name=form]");
+			form.action = "/v1/infra/diary/diaryUsrInst";
+			form.submit();
 		}
 	</script>
 

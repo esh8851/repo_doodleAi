@@ -29,7 +29,7 @@ public class DiaryController {
 	@RequestMapping(value="/v1/infra/diary/diaryUsrInst")
 	public String diaryUsrInst(DiaryDto diaryDto) {
 		diaryService.insert(diaryDto);
-		return "redirect:usr/v1/infra/diary/diaryUsrList";
+		return "redirect:/v1/infra/diary/diaryUsrList";
 	}
 	
 	@RequestMapping(value="/v1/infra/diary/diaryUsrMForm")

@@ -18,6 +18,21 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
 public class DreamsService {
+	
+	@Autowired
+	DreamsDao dao;
+	
+	public List<DreamsDto> selectList() {
+		return dao.selectList();
+	}
+	
+	public DreamsDto selectOne(DreamsDto dto) {
+		return dao.selectOne(dto);
+	}
+	
+	public int insert(DreamsDto dto) {
+		return dao.insert(dto);
+	}
 
 	private static final String OPENAI_API_URL = "https://api.openai.com/v1/chat/completions";
 

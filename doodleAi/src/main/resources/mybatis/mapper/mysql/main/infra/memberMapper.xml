@@ -76,7 +76,7 @@
 		    ,#{ifmmId}
 		    ,#{ifmmPassword}
 		    ,#{ifmmBirth}
-		    ,#{ifmmGender}
+		    ,1
 		    ,#{ifmmPhone}
 		    ,#{ifmmEmail}
 		    ,1
@@ -90,7 +90,7 @@
 		 </selectKey>
 	</insert>
 	  
-	<select id="selectOne" resultMap="resultMapObj">
+	<select id="selectOneLogin" resultMap="resultMapObj">
 		select
 			a.ifmmSeq
 				,a.ifmmName
@@ -109,17 +109,16 @@
 		from
 			member a
 		where 1=1
-			AND a.ifmmSeq = #{ifmmSeq}
+			AND a.ifmmId = #{ifmmId}
 	</select>
 	
 	<select id="selectOneId" resultMap="resultMapObj">
 		select
-			a.ifmmSeq
-		    ,a.ifmmId
+		    a.ifmmId
 		from
 			member a
 		where 1=1
-			AND a.ifmmSeq = #{ifmmSeq}
+			AND a.ifmmId = #{ifmmId}
 	</select>
 	
 	

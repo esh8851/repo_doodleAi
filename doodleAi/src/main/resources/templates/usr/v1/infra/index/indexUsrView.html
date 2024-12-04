@@ -681,6 +681,23 @@
   <!-- Template Main JS File -->
   <script src="/usr/v1/template/NiceAdmin-1.0.0/assets/js/main.js"></script>
 
+  <script>
+	document.getElementById("btnLogout").onclick = function(){
+				$.ajax({
+					async: true 
+					,cache: false
+					,type: "post"
+					,url: "/signoutUsrProc"
+					,success: function(response) {
+								location.href = "/v1/infra/member/signinUsrForm";
+					}
+					,error : function(jqXHR, textStatus, errorThrown){
+						alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+					}
+				});
+			}
+  </script>
+
 </body>
 
 </html>

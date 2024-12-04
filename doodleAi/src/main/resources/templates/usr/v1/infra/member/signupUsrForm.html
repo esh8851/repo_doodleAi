@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<th:block th:replace="~{usr/v1/infra/include/head :: head}"></th:block>
+
+<body>
+
+  <main>
+    <div class="container">
+
+      <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+
+              <div class="d-flex justify-content-center py-4">
+                <a href="/v1/infra/member/signinUsrForm" class="logo d-flex align-items-center w-auto">
+                  <img src="/usr/v1/template/NiceAdmin-1.0.0/assets/img/logo.png" alt="">
+                  <span class="d-none d-lg-block">DoodleAi</span>
+                </a>
+              </div><!-- End Logo -->
+
+              <div class="card mb-3">
+
+                <div class="card-body">
+
+                  <div class="pt-4 pb-2">
+                    <h5 class="card-title text-center pb-0 fs-4">회원가입</h5>
+                    <p class="text-center small">개인정보를 입력해 주세요!</p>
+                  </div>
+
+                  <form class="row g-3 needs-validation" id="form" name="form" method="post" action="/usr/v1/infra/member/memberUsrInst" novalidate>
+                    <div class="col-6">
+                      <label for="yourName" class="form-label">이름</label>
+                      <input type="text" name="ifmmName" class="form-control" id="ifmmName" required autocomplete="off">
+					<div id="ifmmNameError" class="text-danger" style="display: none;"></div>
+                    </div>
+
+                    <div class="col-6">
+                      <label for="yourEmail" class="form-label">닉네임</label>
+                      <input type="text" name="ifmmNickName" class="form-control" id="ifmmNickName" autocomplete="off" required>
+					  <div id="ifmmNickNameError" class="text-danger" style="display: none;"></div>
+                    </div>
+                    
+                    <div class="col-12">
+                      <label for="yourEmail" class="form-label">아이디</label>
+                      <input type="text" name="ifmmId" class="form-control" id="ifmmId" autocomplete="off" required>
+                      <div id="ifmmIdError" class="text-danger" style="display: none;"></div>
+                    </div>
+                    
+                    <div class="col-12">
+                      <label for="yourEmail" class="form-label">비밀번호</label>
+                      <input type="text" name="ifmmPassword" class="form-control" id="ifmmPassword" required autocomplete="off">
+                      <div id="ifmmPasswordError" class="text-danger" style="display: none;"></div>
+                    </div>
+                    
+                    <div class="col-12">
+                      <label for="yourEmail" class="form-label">비밀번호확인</label>
+                      <input type="text" name="ifmmPassword2" class="form-control" id="ifmmPassword2" required autocomplete="off">
+                      <div id="ifmmPassword2Error" class="text-danger" style="display: none;"></div>
+                    </div>
+                    
+                    <div class="col-6">
+                      <label for="yourEmail" class="form-label">생년월일</label>
+                      <input type="text" name="ifmmBirth" class="form-control" id="ifmmBirth" required autocomplete="off">
+                      <div id="ifmmBirthError" class="text-danger" style="display: none;"></div>
+                    </div>
+                    
+                    <div class="col-6">
+                      <legend class="col-form-label pt-0">성별</legend>
+                      <div class="form-check">
+                      	<input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+                      	<label class="form-check-label" for="gridRadios1">남자</label>
+                      </div>
+                      <div class="form-check">
+                      	<input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                      	<label class="form-check-label" for="gridRadios2">여자</label>
+                      </div>
+                      <div class="invalid-feedback">Please enter a valid Email adddress!</div>
+                    </div>
+                    
+                    <div class="col-12">
+                      <label for="yourEmail" class="form-label">핸드폰</label>
+                      <input type="text" name="ifmmPhone" class="form-control" id="ifmmPhone" required autocomplete="off">
+                      <div id="ifmmPhoneError" class="text-danger" style="display: none;"></div>
+                    </div>
+
+                    <div class="col-12">
+                      <label for="yourUsername" class="form-label">이메일</label>
+                      <div class="input-group has-validation">
+                        <span class="input-group-text" id="inputGroupPrepend">@</span>
+                        <input type="text" name="ifmmEmail" class="form-control" id="ifmmEmail" required autocomplete="off">
+                        <div id="ifmmEmailError" class="text-danger" style="display: none;"></div>
+                      </div>
+                    </div>
+
+                    <div class="col-12">
+                      <div class="form-check">
+                        <input class="form-check-input" name="terms" type="checkbox" value="" id="acceptTerms" required>
+                        <label class="form-check-label" for="acceptTerms"><a href="#">약관</a>에 동의합니다</label>
+                        <div class="invalid-feedback">You must agree before submitting.</div>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <button class="btn btn-primary w-100" type="button" id="btnSignup" name="btnSignup">회원가입</button>
+                    </div>
+                    <div class="col-12">
+                      <p class="small mb-0">이미 계정이 있나요? <a href="/v1/infra/member/signinUsrForm">로그인</a></p>
+                    </div>
+                  </form>
+
+                </div>
+              </div>
+
+              <div class="credits">
+                <!-- All the links in the footer should remain intact. -->
+                <!-- You can delete the links only if you purchased the pro version. -->
+                <!-- Licensing information: https://bootstrapmade.com/license/ -->
+                <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
+                Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+  </main><!-- End #main -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="/usr/v1/template/NiceAdmin-1.0.0/assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="/usr/v1/template/NiceAdmin-1.0.0/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/usr/v1/template/NiceAdmin-1.0.0/assets/vendor/chart.js/chart.umd.js"></script>
+  <script src="/usr/v1/template/NiceAdmin-1.0.0/assets/vendor/echarts/echarts.min.js"></script>
+  <script src="/usr/v1/template/NiceAdmin-1.0.0/assets/vendor/quill/quill.js"></script>
+  <script src="/usr/v1/template/NiceAdmin-1.0.0/assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="/usr/v1/template/NiceAdmin-1.0.0/assets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="/usr/v1/template/NiceAdmin-1.0.0/assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="/usr/v1/template/NiceAdmin-1.0.0/assets/js/main.js"></script>
+
+  <script>
+  	document.getElementById("btnSignup").onclick = function(){
+  		
+  		const ifmmName = document.getElementById("ifmmName");
+		const ifmmNameValue = document.getElementById("ifmmName").value.trim();
+		const ifmmNameError = document.getElementById("ifmmNameError");
+  		
+		var ifmmNameRegExp = /^[가-힣]{2,4}$/;
+		if (!ifmmNameRegExp.test(ifmmNameValue)) {
+			ifmmNameError.innerText = "한글 이름 2~4자 이내에 입력해 주세요.";
+			ifmmNameError.style.display = "";
+			ifmmName.classList.add("is-invalid");
+			ifmmName.classList.remove("is-valid");
+			ifmmName.focus();
+			return false;
+		} else {
+			ifmmNameError.style.display = "none";
+			ifmmName.classList.remove("is-invalid");
+			ifmmName.classList.add("is-valid");
+		}
+		
+		const ifmmNickName = document.getElementById("ifmmNickName");
+		const ifmmNickNameValue = document.getElementById("ifmmNickName").value.trim();
+		const ifmmNickNameError = document.getElementById("ifmmNickNameError");
+
+		var ifmmNickNameRegExp = /^[가-힣a-zA-Z]{1,10}$/;
+		if (!ifmmNickNameRegExp.test(ifmmNickNameValue)) {
+			ifmmNickNameError.innerText = "한글과 영어만 입력할 수 있으며, 최대 10글자까지 작성 가능합니다.";
+			ifmmNickNameError.style.display = "";
+			ifmmNickName.classList.add("is-invalid");
+			ifmmNickName.classList.remove("is-valid");
+			ifmmNickName.focus();
+			return false;
+		} else {
+			ifmmNickNameError.style.display = "none";
+			ifmmNickName.classList.remove("is-invalid");
+			ifmmNickName.classList.add("is-valid");
+		}
+		
+		const ifmmId = document.getElementById("ifmmId");
+		const ifmmIdValue = document.getElementById("ifmmId").value.trim();
+		const ifmmIdError = document.getElementById("ifmmIdError");
+
+		var ifmmIdRegExp = /^[a-zA-Z][0-9a-zA-Z]{7,11}$/;
+		if (!ifmmIdRegExp.test(ifmmIdValue)) {
+			ifmmIdError.innerText = "영문,숫자 포함 8~12자 사이에 입력해 주세요.";
+			ifmmIdError.style.display = "";
+			ifmmId.classList.add("is-invalid");
+			ifmmId.classList.remove("is-valid");
+			ifmmId.focus();
+			return false;
+		} else {
+			ifmmIdError.style.display = "none";
+			ifmmId.classList.remove("is-invalid");
+			ifmmId.classList.add("is-valid");
+		}
+
+		const ifmmPassword = document.getElementById("ifmmPassword");
+		const ifmmPasswordValue = document.getElementById("ifmmPassword").value.trim();
+		const ifmmPasswordError = document.getElementById("ifmmPasswordError");
+
+		var ifmmPasswordRegExp = /^[a-zA-Z][0-9a-zA-Z]{7,11}$/;
+		if (!ifmmPasswordRegExp.test(ifmmPasswordValue)) {
+			ifmmPasswordError.innerText = "영문,숫자 포함 8~12자 이내에 입력해 주세요.";
+			ifmmPasswordError.style.display = "";
+			ifmmPassword.classList.add("is-invalid");
+			ifmmPassword.classList.remove("is-valid");
+			ifmmPassword.focus();
+			return false;
+		} else {
+			ifmmPasswordError.style.display = "none";
+			ifmmPassword.classList.remove("is-invalid");
+			ifmmPassword.classList.add("is-valid");
+		}
+
+		const ifmmPassword2 = document.getElementById("ifmmPassword2");
+		const ifmmPassword2Value = document.getElementById("ifmmPassword2").value.trim();
+		const ifmmPassword2Error = document.getElementById("ifmmPassword2Error");
+
+		var ifmmPassword2RegExp = /^[a-zA-Z][0-9a-zA-Z]{7,11}$/;
+		if (!ifmmPassword2RegExp.test(ifmmPassword2Value)) {
+			ifmmPassword2Error.innerText = "영문,숫자 포함 8~12자 이내에 입력해 주세요.";
+			ifmmPassword2Error.style.display = "";
+			ifmmPassword2.classList.add("is-invalid");
+			ifmmPassword2.classList.remove("is-valid");
+			ifmmPassword2.focus();
+			return false;
+		} else {
+			ifmmPassword2Error.style.display = "none";
+			ifmmPassword2.classList.remove("is-invalid");
+			ifmmPassword2.classList.add("is-valid");
+		}
+		if (ifmmPasswordValue !== ifmmPassword2Value) {
+			ifmmPassword2Error.innerText = "비밀번호가 일치하지 않습니다.";
+			ifmmPassword2Error.style.display = "";
+			ifmmPassword2.classList.add("is-invalid");
+			ifmmPassword2.classList.remove("is-valid");
+			ifmmPassword2.focus();
+			return false;
+		} else {
+			//by pass
+		}
+		
+		const ifmmBirth = document.getElementById("ifmmBirth");
+		const ifmmBirthValue = document.getElementById("ifmmBirth").value.trim();
+		const ifmmBirthError = document.getElementById("ifmmBirthError");
+
+		var ifmmBirthRegExp = /^(19|20)\d{2}(0[1-9]|1[0-2])(0[1-9]|[12]\d|3[01])$/;
+		if (!ifmmBirthRegExp.test(ifmmBirthValue)) {
+			ifmmBirthError.innerText = "생년월일을 올바른 형식으로 입력해주세요. 예)'19900101'";
+			ifmmBirthError.style.display = "";
+			ifmmBirth.classList.add("is-invalid");
+			ifmmBirth.classList.remove("is-valid");
+			ifmmBirth.focus();
+			return false;
+		} else {
+			ifmmBirthError.style.display = "none";
+			ifmmBirth.classList.remove("is-invalid");
+			ifmmBirth.classList.add("is-valid");
+		}
+		
+		const ifmmPhone = document.getElementById("ifmmPhone");
+		const ifmmPhoneValue = document.getElementById("ifmmPhone").value.trim();
+		const ifmmPhoneError = document.getElementById("ifmmPhoneError");
+
+		var ifmmPhoneRegExp = /^01[016789]\d{7,8}$/;
+		if (!ifmmPhoneRegExp.test(ifmmPhoneValue)) {
+			ifmmPhoneError.innerText = "휴대폰 번호는 하이픈(-) 없이 입력해주세요.";
+			ifmmPhoneError.style.display = "";
+			ifmmPhone.classList.add("is-invalid");
+			ifmmPhone.classList.remove("is-valid");
+			ifmmPhone.focus();
+			return false;
+		} else {
+			ifmmPhoneError.style.display = "none";
+			ifmmPhone.classList.remove("is-invalid");
+			ifmmPhone.classList.add("is-valid");
+		}
+		
+		const ifmmEmail = document.getElementById("ifmmEmail");
+		const ifmmEmailValue = document.getElementById("ifmmEmail").value.trim();
+		const ifmmEmailError = document.getElementById("ifmmEmailError");
+
+		var ifmmEmailRegExp = /^[a-z0-9\.\-_]+@([a-z0-9\-]+\.)+[a-z]{2,6}$/;
+		if (!ifmmEmailRegExp.test(ifmmEmailValue)) {
+			ifmmEmailError.innerText = "이메일을 올바르게 입력해 주세요.";
+			ifmmEmailError.style.display = "";
+			ifmmEmail.classList.add("is-invalid");
+			ifmmEmail.classList.remove("is-valid");
+			ifmmEmail.focus();
+			return false;
+		} else {
+			ifmmEmailError.style.display = "none";
+			ifmmEmail.classList.remove("is-invalid");
+			ifmmEmail.classList.add("is-valid");
+		}
+		
+  		let form = document.querySelector("form[name=form]");
+		form.action = "/usr/v1/infra/member/memberUsrInst";
+		form.submit();
+  	}
+  </script>
+
+</body>
+
+</html>

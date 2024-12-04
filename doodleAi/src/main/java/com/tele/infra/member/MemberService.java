@@ -13,8 +13,8 @@ public class MemberService {
 		return memberDao.selectOneLogin(memberDto);
 	}
 	
-	public MemberDto selectOne(MemberDto memberDto) {
-		return memberDao.selectOne(memberDto);
+	public MemberDto selectOneId(MemberDto memberDto) {
+		return memberDao.selectOneId(memberDto);
 	}
 	
 	public int selectOneCount(MemberVo vo) {

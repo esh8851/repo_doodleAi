@@ -2,15 +2,12 @@ package com.tele.infra.member;
 
 import org.springframework.stereotype.Repository;
 
-
-
-
 @Repository
 public interface MemberDao {
 
 	public MemberDto selectOneLogin(MemberDto memberDto);
 	
-	public MemberDto selectOne(MemberDto memberDto);
+	public MemberDto selectOneId(MemberDto memberDto);
 	
 	public int selectOneCount(MemberVo vo);
 	

@@ -210,7 +210,27 @@
 
 	<!-- Template Main JS File -->
 	<script src="/usr/v1/template/NiceAdmin-1.0.0/assets/js/main.js"></script>
+	
+	<!-- jQuery 라이브러리 추가 -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+  <script>
+	document.getElementById("btnLogout").onclick = function(){
+				$.ajax({
+					async: true 
+					,cache: false
+					,type: "post"
+					,url: "/signoutUsrProc"
+					,success: function(response) {
+								location.href = "/v1/infra/member/signinUsrForm";
+					}
+					,error : function(jqXHR, textStatus, errorThrown){
+						alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+					}
+				});
+			}
+  </script>
+	
 </body>
 
 </html>

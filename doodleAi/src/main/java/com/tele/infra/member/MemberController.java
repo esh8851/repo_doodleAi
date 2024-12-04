@@ -54,10 +54,10 @@ public class MemberController {
 				httpSession.setAttribute("sessIdUsr", rtMember2.getIfmmId());
 				httpSession.setAttribute("sessNameUsr", rtMember2.getIfmmName());
 				httpSession.setAttribute("sessNickNameUsr", rtMember2.getIfmmNickName());
+				httpSession.setAttribute("sessGenderUsr", rtMember2.getIfmmGender());
 				httpSession.setAttribute("sessEmailUsr", rtMember2.getIfmmEmail());
 				httpSession.setAttribute("sessPhoneUsr", rtMember2.getIfmmPhone());
-				httpSession.setAttribute("sessAddressUsr", rtMember2.getIfmmPhone());
-				httpSession.setAttribute("sessDtBirthUsr", rtMember2.getIfmmBirth());
+				httpSession.setAttribute("sessBirthUsr", rtMember2.getIfmmBirth());
 				httpSession.setAttribute("Member_memseq", rtMember2.getIfmmSeq());
 				System.out.println("Member_memseq set in session:" + rtMember2.getIfmmSeq());
 				returnMap.put("rt", "success");
@@ -70,12 +70,12 @@ public class MemberController {
 		System.out.println("sessSeqUsr: " + httpSession.getAttribute("sessSeqUsr"));
 		System.out.println("sessIdUsr: " + httpSession.getAttribute("sessIdUsr"));
 		System.out.println("sessNameUsr: " + httpSession.getAttribute("sessNameUsr"));
-		System.out.println("Member_memseq: " + httpSession.getAttribute("Member_memseq"));
+		System.out.println("sessNickNameUsr: " + httpSession.getAttribute("sessNickNameUsr"));
+		System.out.println("sessGenderUsr: " + httpSession.getAttribute("sessGenderUsr"));
 		System.out.println("sessEmailUsr: " + httpSession.getAttribute("sessEmailUsr"));
-		System.out.println("sessPhoneNumUsr: " + httpSession.getAttribute("sessPhoneNumUsr"));
-		System.out.println("sessZipcodeUsr: " + httpSession.getAttribute("sessZipcodeUsr"));
-		System.out.println("sessAddressUsr: " + httpSession.getAttribute("sessAddressUsr"));
-		System.out.println("sessDtAddressUsr: " + httpSession.getAttribute("sessDtAddressUsr"));
+		System.out.println("sessPhoneUsr: " + httpSession.getAttribute("sessPhoneUsr"));
+		System.out.println("sessBirthUsr: " + httpSession.getAttribute("sessBirthUsr"));
+		System.out.println("Member_memseq: " + httpSession.getAttribute("Member_memseq"));
 		return returnMap;
 	}
 	

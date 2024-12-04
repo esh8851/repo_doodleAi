@@ -33,6 +33,29 @@
 			,a.ifdrOpenNy
 			,a.member_ifmmSeq
 		FROM diary AS a
+		WHERE 1 = 1
+			AND ifdrSeq = #{ifdrSeq}
 	</select>
+	
+	<insert id="insert">
+		INSERT INTO diary (
+			ifdrTitle
+			,ifdrDesc
+			,ifdrDateTime
+			,ifdrDateTimeEdit
+			,ifdrDelNy
+			,ifdrOpenNy
+			,member_ifmmSeq
+		)
+		VALUES (
+			#{ifdrTitle}
+			,#{ifdrDesc}
+			,now()
+			,now()
+			,0
+			,#{ifdrOpenNy}
+			,#{member_ifmmSeq}
+		)
+	</insert>
 	
 </mapper>

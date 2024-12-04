@@ -9,6 +9,8 @@ public interface DiaryDao {
 	
 	public List<DiaryDto> selectList(DiaryDto diaryDto);
 	
-	public DiaryDto selectOne();
+	public DiaryDto selectOne(DiaryDto diaryDto);
+	
+	public int insert(DiaryDto diaryDto);
 
 }

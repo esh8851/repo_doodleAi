@@ -15,8 +15,12 @@ public class DiaryService {
 		return diaryDao.selectList(diaryDto);
 	}
 	
-	public DiaryDto selectOne() {
-		return diaryDao.selectOne();
+	public DiaryDto selectOne(DiaryDto diaryDto) {
+		return diaryDao.selectOne(diaryDto);
+	}
+	
+	public int insert(DiaryDto diaryDto) {
+		return diaryDao.insert(diaryDto);
 	}
 
 }

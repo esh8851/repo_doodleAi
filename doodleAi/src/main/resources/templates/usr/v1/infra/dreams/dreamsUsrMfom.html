@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+.qnaCategory{
+	border: 2px solid pink;
+	width: 277px;
+	height: 45px;
+	border-radius: 7px;
+	background-color: rgba(255, 255, 255, 0.8);
+}
+.qnaTitle{
+	border: 2px solid pink;
+	margin: 0px 0px 13px 150px;
+	width: 700px;
+	height: 45px;
+	padding: 10px;
+	border-radius: 7px;
+	background-color: rgba(255, 255, 255, 0.8);
+}
+.qnatext {
+    max-width: 75%; 
+    width: 100%; 
+    min-height: 200px;
+    padding: 10px 10px 160px;
+    border: 2px solid pink;
+    border-radius: 7px;
+    margin-left: 150px;
+    background-color: rgba(255, 255, 255, 0.8);
+    
+    overflow-y: auto; /* 내용이 넘칠 경우 세로 스크롤 활성화 */
+    resize: vertical; /* 사용자가 높이를 조정 가능하도록 허용 (선택 사항) */
+    box-sizing: border-box; /* 패딩과 테두리를 포함한 크기 계산 */
+}
+.card-title {
+	margin: 0px 0px 0px 500px;
+	
+  }
+</style>
+<th:block th:replace="~{usr/v1/infra/include/head :: head}"></th:block>
+
+<body>
+
+  <!-- Start Header -->
+  <th:block th:replace="~{usr/v1/infra/include/header :: header}"></th:block>
+  <!-- End Header -->
+
+  <!-- Side bar -->
+  <th:block th:replace="~{usr/v1/infra/include/aside :: aside}"></th:block>
+  <!-- End Side bar-->
+
+  <main id="main" class="main">
+
+		<div class="pagetitle">
+			<h1>공유 일기장</h1>
+			<nav>
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a href="/v1/infra/qna/qnaUsrList">Home</a></li>
+					<li class="breadcrumb-item active">공유 일기장</li>
+				</ol>
+			</nav>
+		</div>
+		<!-- End Page Title -->
+
+		<section class="section dashboard">
+			<div class="row">
+				<div class="col-12">
+					<div class="card" >
+<!-- 							<img src="/usr/v1/template/NiceAdmin-1.0.0/assets/img/4.jpg" alt="설명 텍스트" /> -->
+						<div class="card-body">
+							<h3 class="card-title" style="font-size: 17pt; color:black;">님의 저장된 Ai꿈 해몽 결과</h3>
+								<form id="form" name="form" method="post" action="">
+									<input readonly type="text" class="qnaTitle" th:value="${item?.ifdmTitle}" autocomplete="off">
+									<input readonly type="text" class="qnaCategory" th:value="${#dates.format(item?.ifdmDateTime, 'yyyy-MM-dd')}">
+									<textarea readonly class="qnatext" th:text="${item?.ifdmDesc}" autocomplete="off" readolny></textarea>
+								</form>
+								<div class="d-flex justify-content-between mt-3">
+									<button type="button" class="btn btn-outline-primary" id="btnDreamList" style="background-color: pink; color: black; border-color: pink;">
+									<i class="bi bi-list-task"> 목록</i>
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+		<!-- End #main -->
+
+  <!-- Start Footer -->
+  <th:block th:replace="~{usr/v1/infra/include/footer :: footer}"></th:block>
+  <!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="/usr/v1/template/NiceAdmin-1.0.0/assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="/usr/v1/template/NiceAdmin-1.0.0/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/usr/v1/template/NiceAdmin-1.0.0/assets/vendor/chart.js/chart.umd.js"></script>
+  <script src="/usr/v1/template/NiceAdmin-1.0.0/assets/vendor/echarts/echarts.min.js"></script>
+  <script src="/usr/v1/template/NiceAdmin-1.0.0/assets/vendor/quill/quill.js"></script>
+  <script src="/usr/v1/template/NiceAdmin-1.0.0/assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="/usr/v1/template/NiceAdmin-1.0.0/assets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="/usr/v1/template/NiceAdmin-1.0.0/assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="/usr/v1/template/NiceAdmin-1.0.0/assets/js/main.js"></script>
+  
+  <script>
+	document.getElementById("btnDreamList").onclick = function() {
+		window.location = "/v1/infra/dreams/dreamsUsrView"
+	}
+  </script>
+
+</body>
+
+</html>

@@ -1,36 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <style>
-/* page-loading */
-  #loading {
-  	width: 100%;
-  	height: 100%;
-  	top: 0;
-  	left: 0;
-  	position: fixed;
-  	display: block;
-  	opacity: 0.6;
-  	background: #e4e4e4;
-  	z-index: 99;
-  	text-align: center;
-  }
-  
+.pink-bordered-text {
+    font-size: 15px;
+    color: pink;
+    text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+}
 </style>
-<!-- head S -->
+
 <th:block th:replace="~{usr/v1/infra/include/head :: head}"></th:block>
-<!-- head E -->
-
-
 
 <body>
-
-	<!-- Start Header -->
+	<!-- ======= Header ======= -->
 	<th:block th:replace="~{usr/v1/infra/include/header :: header}"></th:block>
 	<!-- End Header -->
 
-	<!-- Side bar -->
+	<!-- ======= Sidebar ======= -->
 	<th:block th:replace="~{usr/v1/infra/include/aside :: aside}"></th:block>
-	<!-- End Side bar-->
+	<!-- End Sidebar-->
 
 	<main id="main" class="main">
 
@@ -38,7 +25,7 @@
 			<h1>Ai 꿈 해몽</h1>
 			<nav>
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="index.html">홈</a></li>
+					<li class="breadcrumb-item"><a href="/v1/infra/index/indexUsrView">Home</a></li>
 					<li class="breadcrumb-item active">Ai 꿈 해몽</li>
 				</ol>
 			</nav>
@@ -46,55 +33,51 @@
 		<!-- End Page Title -->
 
 		<section class="section dashboard">
-			<form id="form" name="form" method="post" action="/v1/infra/dreams/dreamsUsrView">
+			<form name="form" method="post" action="/v1/infra/dreams/dreamsUsrForm">
 				<div class="row">
-					<div class="col-lg-2"></div>
-					<div class="col-lg-8">
+					<div class="col-12">
 						<div class="card">
+<!-- 							<p class = "fs-0" style="text-align: center;"> 저장된 꿈 해몽이 없습니다!</p> -->
 							<div class="card-body">
-								<h5 class="card-title fw-bold">Ai 꿈	 해몽</h5>
-								<!-- TinyMCE Editor -->
-								<textarea class="form-control" name="userInput" autocomplete="off" placeholder="꿈의 내용을 적어주세요!"></textarea>
-								<!-- End TinyMCE Editor -->
-							</div>
-							<div class="d-flex justify-content-end me-3 mb-3">
-								<button type="submit" class="btn btn-outline-success">
-									<i class="bi bi-star me-1"></i> 해몽하기
-								</button>
+								<h5 class="card-title fw-bold"></h5>
+									<div class="row justify-content-left">
+									    <div class="col-sm-2 mb-3" th:each="list : ${list}">
+									        <div class="card">
+									            <div class="card-body">
+									                <h5 class="card-title" style="font-size: 14pt;">꿈 내용:  <a th:href="@{/v1/infra/dreams/dreamsUsrMfom(ifdmSeq=${list.ifdmSeq})}" style="font-size : 13pt;" th:text="${list.ifdmTitle}"></a></h5>
+<!-- 									                <a th:href="@{/usr/v1/infra/product/detailUsrView(prseq=${list.prseq})}" th:text="${list.prProdName}"></a> -->
+									            </div>
+									            <div class="card-footer" th:text = "${#dates.format(list.ifdmDateTime, 'yyyy-MM-dd')}"></div>
+									        </div>
+									    </div>
+									</div>
+								<div class="row">
+									<div class="d-flex justify-content-end me-3 mb-3">
+										<button type="submit" class="btn btn-outline-success">
+											<i class="bi bi-star me-1"></i> 해몽하기
+										</button>
+									</div>
+									<div class="col">
+										<nav aria-label="Page navigation example">
+											<ul class="pagination justify-content-center">
+												<li class="page-item"><a class="page-link" href="#">1</a></li>
+												<li class="page-item"><a class="page-link" href="#">2</a></li>
+												<li class="page-item"><a class="page-link" href="#">3</a></li>
+											</ul>
+										</nav>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
-					<div class="col-lg-2"></div>
 				</div>
-				<button id="loading" class="btn btn-primary" type="button" disabled>
-				    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-				    <p>해몽 중</p>
-				</button>
 			</form>
-			<th:block th:if="${userInput != null}">
-			<div class="row">
-				<div class="col-lg-2"></div>
-				<div class="col-lg-8">
-					<div class="card">
-						<div class="card-body">
-							<h5 class="card-title fw-bold" th:text="${userInput}"></h5>
-							<div class="input-group">
-								<span class="input-group-text" style="max-width:120px;white-space:normal;">해몽 결과</span>
-								<textarea readonly class="form-control" aria-label="With textarea" th:text="${aiResponse}"></textarea>
-							</div>
-						</div>
-						<div class="card-footer">feat.Chat Gpt</div>
-					</div>
-				</div>
-				<div class="col-lg-2"></div>
-			</div>
-			</th:block>
 		</section>
 
 	</main>
 	<!-- End #main -->
-	
-	<!-- Start Footer -->
+
+	<!-- ======= Footer ======= -->
 	<th:block th:replace="~{usr/v1/infra/include/footer :: footer}"></th:block>
 	<!-- End Footer -->
 
@@ -122,22 +105,10 @@
 
 	<!-- Template Main JS File -->
 	<script src="/usr/v1/template/NiceAdmin-1.0.0/assets/js/main.js"></script>
-	
-	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-	
-	 <script type="text/javascript">
 
-	$(document).ready(function() {
-	
-	$('#loading').hide();
-	$('#form').submit(function(){
-	    $('#loading').show();
-	    return true;
-	    });
-	});
-
+	<!-- btnForm -->
+	<script type="text/javascript">
 	</script>
 
-</body>
-
+	
 </html>

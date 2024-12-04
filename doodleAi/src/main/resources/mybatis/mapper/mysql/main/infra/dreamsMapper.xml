@@ -7,4 +7,50 @@
 
 	<resultMap type="com.tele.infra.dreams.DreamsDto" id="resultMapObj"></resultMap>
 	
+	<select id="selectList" resultMap="resultMapObj">
+		SELECT
+			a.ifdmSeq
+			,a.ifdmTitle
+			,a.ifdmDesc
+			,a.ifdmDateTime
+			,a.ifdmDateTimeEdit
+			,a.member_ifmmSeq
+		FROM dream a
+		ORDER BY
+			a.ifdmSeq DESC
+	</select>
+	
+	<select id="selectOne" resultMap="resultMapObj">
+		select
+			a.ifdmSeq
+			,a.ifdmTitle
+			,a.ifdmDesc
+			,a.ifdmDateTime
+			,a.ifdmDateTimeEdit
+			,a.member_ifmmSeq
+		from
+			dream a
+		where 1=1
+			and ifdmSeq = #{ifdmSeq}
+	</select>
+	
+	<insert id="insert">
+		insert into dream(
+			ifdmTitle
+			,ifdmDesc
+			,ifdmDateTime
+			,ifdmDateTimeEdit
+			,member_ifmmSeq
+		)values(
+			#{ifdmTitle},
+			#{ifdmDesc},
+			now(),
+			now(),
+			1
+		)
+		<selectKey resultType="String" keyProperty="ifdmSeq" order="AFTER">
+			SELECT last_Insert_id()
+		</selectKey>
+	</insert>
+	
 </mapper>

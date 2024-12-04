@@ -53,11 +53,11 @@ public class MemberController {
 				httpSession.setAttribute("sessSeqUsr", rtMember2.getIfmmSeq());
 				httpSession.setAttribute("sessIdUsr", rtMember2.getIfmmId());
 				httpSession.setAttribute("sessNameUsr", rtMember2.getIfmmName());
-				httpSession.setAttribute("sessZipcodeUsr", rtMember2.getIfmmNickName());
+				httpSession.setAttribute("sessNickNameUsr", rtMember2.getIfmmNickName());
 				httpSession.setAttribute("sessEmailUsr", rtMember2.getIfmmEmail());
-				httpSession.setAttribute("sessPhoneNumUsr", rtMember2.getIfmmPhone());
+				httpSession.setAttribute("sessPhoneUsr", rtMember2.getIfmmPhone());
 				httpSession.setAttribute("sessAddressUsr", rtMember2.getIfmmPhone());
-				httpSession.setAttribute("sessDtAddressUsr", rtMember2.getIfmmBirth());
+				httpSession.setAttribute("sessDtBirthUsr", rtMember2.getIfmmBirth());
 				httpSession.setAttribute("Member_memseq", rtMember2.getIfmmSeq());
 				System.out.println("Member_memseq set in session:" + rtMember2.getIfmmSeq());
 				returnMap.put("rt", "success");

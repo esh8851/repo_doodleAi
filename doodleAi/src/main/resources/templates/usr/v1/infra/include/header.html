@@ -175,7 +175,7 @@
 	
 	          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
 	            <li class="dropdown-header">
-	              <h6 th:text="${session.sessNameUsr}">Kevin Anderson</h6>
+	              <h6 th:text="${session.sessNameUsr}"></h6>
 	              <span>Web Designer</span>
 	            </li>
 	            <li>
@@ -214,14 +214,13 @@
 				
 				<li th:if="${session.sessSeqUsr == null}">
 	              <a class="dropdown-item d-flex align-items-center" th:href="@{/v1/infra/member/signinUsrForm}">
-	                <i class="bi bi-box-arrow-right"></i>
-	                <span>로그인</span>
+	                <i class="bi bi-box-arrow-right"></i><span>로그인</span>
 	              </a>
 	            </li>
 				
 	            <li th:unless="${session.sessSeqUsr == null}">
 	              <a class="dropdown-item d-flex align-items-center" href="" id="btnLogout">
-	                <i class="bi bi-box-arrow-right"></i> <span>로그아웃</span>
+	                <i class="bi bi-box-arrow-right"></i><span>로그아웃</span>
 	              </a>
 	            </li>
 	

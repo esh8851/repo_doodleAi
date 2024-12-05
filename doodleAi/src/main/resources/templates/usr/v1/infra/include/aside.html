@@ -28,7 +28,7 @@
 	      </li>
 	      
 	      <li class="nav-item">
-	        <a class="nav-link collapsed" href="/v1/infra/dreams/dreamsUsrView">
+	        <a class="nav-link collapsed" th:href="@{/v1/infra/dreams/dreamsUsrView(member_ifmmSeq=${session.sessSeqUsr})}">
 	          <i class="bi bi-cloud"></i><span>Ai 꿈 해몽</span>
 	        </a>
 	      </li><!-- End Tables Nav -->

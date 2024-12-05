@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface DreamsDao {
 
-	public List<DreamsDto> selectList();
+	public List<DreamsDto> selectList(DreamsDto dto);
 	
 	public DreamsDto selectOne(DreamsDto dto);
 	

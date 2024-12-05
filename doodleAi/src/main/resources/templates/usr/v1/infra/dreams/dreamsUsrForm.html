@@ -82,6 +82,7 @@
 								<span class="input-group-text" style="max-width:120px;white-space:normal;">해몽 결과</span>
 								<textarea readonly class="form-control" aria-label="With textarea" name="ifdmDesc" th:text="${aiResponse}"></textarea>
 							</div>
+							<input type="hidden" id="member_ifmmSeq" name="member_ifmmSeq" th:value="${session.sessSeqUsr}">
 						</div>
 						<div class="d-flex justify-content-start me-3 mb-3">
 							<button type="button" id="btnList" class="btn btn-outline-primary">

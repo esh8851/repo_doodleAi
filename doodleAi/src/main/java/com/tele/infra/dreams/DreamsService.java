@@ -22,8 +22,8 @@ public class DreamsService {
 	@Autowired
 	DreamsDao dao;
 	
-	public List<DreamsDto> selectList() {
-		return dao.selectList();
+	public List<DreamsDto> selectList(DreamsDto dto) {
+		return dao.selectList(dto);
 	}
 	
 	public DreamsDto selectOne(DreamsDto dto) {

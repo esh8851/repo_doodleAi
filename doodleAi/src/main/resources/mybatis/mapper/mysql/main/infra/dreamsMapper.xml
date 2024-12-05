@@ -16,8 +16,8 @@
 			,a.ifdmDateTimeEdit
 			,a.member_ifmmSeq
 		FROM dream a
-		ORDER BY
-			a.ifdmSeq DESC
+		where 1=1
+			and member_ifmmSeq = #{member_ifmmSeq}
 	</select>
 	
 	<select id="selectOne" resultMap="resultMapObj">
@@ -46,7 +46,7 @@
 			#{ifdmDesc},
 			now(),
 			now(),
-			1
+			#{member_ifmmSeq}
 		)
 		<selectKey resultType="String" keyProperty="ifdmSeq" order="AFTER">
 			SELECT last_Insert_id()

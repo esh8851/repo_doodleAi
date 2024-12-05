@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
@@ -21,8 +22,9 @@ public class DreamsController {
 	private DreamsService dreamsService;
 	
 	@RequestMapping(value="/v1/infra/dreams/dreamsUsrView")
-	public String dreamsUsrView(Model model) {
-		model.addAttribute("list", dreamsService.selectList());
+	public String dreamsUsrView(Model model, DreamsDto dto) {
+		model.addAttribute("list", dreamsService.selectList(dto));
+		
 		return "usr/v1/infra/dreams/dreamsUsrView";
 	}
 	

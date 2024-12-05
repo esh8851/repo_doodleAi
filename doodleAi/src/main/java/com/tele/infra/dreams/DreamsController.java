@@ -87,7 +87,7 @@ public class DreamsController {
         String aiResponse = dreamsService.getChatResponseFromOpenAI(conversationHistory2);
         
         // 모델에 응답을 전달하여 뷰로 전달
-        model.addAttribute("userInput", userInput);
+        model.addAttribute("userInput", userInput + "분석해줘");
         model.addAttribute("aiResponse", aiResponse);
 
         // OpenAI 응답을 대화 이력에 추가

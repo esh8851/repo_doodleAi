@@ -1,6 +1,7 @@
 package com.tele.infra.act;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -57,6 +58,16 @@ public class ActController {
             return "usr/v1/infra/act/actUsrForm";
         }
 
+        // **꿈 관련 질문 필터링 로직 추가**
+        if (!isDreamRelated(userInput)) {
+            // 꿈 관련 키워드 안내 메시지 생성
+            String relatedKeywords = String.join(", ", getDreamKeywords());
+            model.addAttribute("errorMessage", 
+                "이 챗봇은 꿈과 관련된 질문만 답변할 수 있습니다. 예를 들어, 다음과 같은 키워드를 사용해 보세요: " + relatedKeywords);
+            model.addAttribute("conversationHistory", conversationHistory);
+            return "usr/v1/infra/act/actUsrForm";
+        }
+
         // 사용자 입력을 대화 이력에 추가
         conversationHistory.add(Map.of("role", "user", "content", userInput));
 
@@ -74,4 +85,16 @@ public class ActController {
 
         return "usr/v1/infra/act/actUsrForm";
     }
+
+    // **꿈 관련 질문 필터링 메서드**
+    private boolean isDreamRelated(String userInput) {
+        return Arrays.stream(getDreamKeywords()).anyMatch(userInput::contains);
+    }
+
+    // **꿈 관련 키워드 제공 메서드**
+    private String[] getDreamKeywords() {
+        return new String[] {"꿈", "해몽", "꿈 해석", "드림"};
+    }
+
+
 }

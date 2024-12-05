@@ -19,8 +19,14 @@ public class MemberController {
 	MemberService memberService;
 	
 	@RequestMapping(value="/v1/infra/member/profileUsrView")
-	public String profileUsrView() {
+	public String profileUsrView(MemberDto memberDto) {
 		return "usr/v1/infra/member/profileUsrView";
+	}
+	
+	@RequestMapping(value="/v1/infra/member/profileUsrPdt")
+	public String profileUsrPdt(MemberDto memberDto) {
+		memberService.update(memberDto);
+		return "redirect:/v1/infra/member/signinUsrForm";
 	}
 	
 	@RequestMapping(value="/v1/infra/member/signinUsrForm")
@@ -52,6 +58,7 @@ public class MemberController {
 				httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE_USR); // 60second * 30 = 30minute
 				httpSession.setAttribute("sessSeqUsr", rtMember2.getIfmmSeq());
 				httpSession.setAttribute("sessIdUsr", rtMember2.getIfmmId());
+				httpSession.setAttribute("sessPwUsr", rtMember2.getIfmmPassword());
 				httpSession.setAttribute("sessNameUsr", rtMember2.getIfmmName());
 				httpSession.setAttribute("sessNickNameUsr", rtMember2.getIfmmNickName());
 				httpSession.setAttribute("sessGenderUsr", rtMember2.getIfmmGender());
@@ -69,6 +76,7 @@ public class MemberController {
 		}
 		System.out.println("sessSeqUsr: " + httpSession.getAttribute("sessSeqUsr"));
 		System.out.println("sessIdUsr: " + httpSession.getAttribute("sessIdUsr"));
+		System.out.println("sessPwUsr: " + httpSession.getAttribute("sessPwUsr"));
 		System.out.println("sessNameUsr: " + httpSession.getAttribute("sessNameUsr"));
 		System.out.println("sessNickNameUsr: " + httpSession.getAttribute("sessNickNameUsr"));
 		System.out.println("sessGenderUsr: " + httpSession.getAttribute("sessGenderUsr"));

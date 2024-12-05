@@ -114,27 +114,27 @@
 	
 	<select id="selectOneId" resultMap="resultMapObj">
 		select
-		    a.ifmmId
+		    a.ifmmId,
+		    a.ifmmPassword
 		from
 			member a
 		where 1=1
 			AND a.ifmmId = #{ifmmId}
+			AND a.ifmmPassword = #{ifmmPassword}
 	</select>
 	
-	
-	  
 	<update id="update">
 		update member
 	  	set
-			ifmmName = #{name}
-		    ,ifmmNickName = #{nickName}
-		    ,ifmmId = #{id}
-		    ,ifmmPassword = #{password}
-		    ,ifmmEmail = #{email}
-		    ,ifmmBirth = #{birthday}
-		    ,ifmmGender = #{gender}
-		    ,ifmmPhone = #{telephone}
-		    ,ifmmDatetimeEdit = now()
+			ifmmName = #{ifmmName}
+		    ,ifmmNickName = #{ifmmNickName}
+		    ,ifmmId = #{ifmmId}
+		    ,ifmmPassword = #{ifmmPassword}
+		    ,ifmmEmail = #{ifmmEmail}
+		    ,ifmmBirth = #{ifmmBirth}
+		    ,ifmmGender = #{ifmmGender}
+		    ,ifmmPhone = #{ifmmPhone}
+		    ,ifmmDateTimeEdit = now()
 	  	where 1=1
 	  		and ifmmSeq = #{ifmmSeq}
 	</update>

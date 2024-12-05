@@ -113,7 +113,7 @@
                 <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
 
                   <!-- Profile Edit Form -->
-                  <form>
+                  <form id="form" name="form" action="/v1/infra/member/profileUsrPdt">
                     <div class="row mb-3">
                       <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">프로필 사진</label>
                       <div class="col-md-8 col-lg-9">
@@ -124,6 +124,9 @@
                         </div>
                       </div>
                     </div>
+                    
+<input type="hidden" id="ifmmSeq" name="ifmmSeq" th:value="${session.sessSeqUsr}">
+<input type="hidden" id="ifmmPassword" name="ifmmPassword" th:value="${session.sessPwUsr}">
 
                     <div class="row mb-3">
                       <label for="fullName" class="col-md-4 col-lg-3 col-form-label">이름</label>
@@ -136,46 +139,50 @@
                       <label for="company" class="col-md-4 col-lg-3 col-form-label">닉네임</label>
                       <div class="col-md-8 col-lg-9">
                         <input type="text" class="form-control" name="ifmmNickName" id="ifmmNickName" th:value="${session.sessNickNameUsr}">
+                        <div id="ifmmNickNameError" class="text-danger" style="display: none;"></div>
                       </div>
                     </div>
 
                     <div class="row mb-3">
                       <label for="Job" class="col-md-4 col-lg-3 col-form-label">아아디</label>
                       <div class="col-md-8 col-lg-9">
-                        <input type="text" class="form-control" id="Job" th:value="${session.sessIdUsr}" readonly>
+                        <input type="text" class="form-control" id="ifmmId" name="ifmmId" th:value="${session.sessIdUsr}" readonly>
                       </div>
                     </div>
 
 					<div class="row mb-3">
                       <label for="Email" class="col-md-4 col-lg-3 col-form-label">생년월일</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="email" type="email" class="form-control" id="Email" th:value="${session.sessBirthUsr}">
+                        <input type="email" class="form-control" id="ifmmBirth" name="ifmmBirth" th:value="${session.sessBirthUsr}">
+                        <div id="ifmmBirthError" class="text-danger" style="display: none;"></div>
                       </div>
                     </div>
 
                     <div class="row mb-3">
                       <label for="Country" class="col-md-4 col-lg-3 col-form-label">성별</label>
                       <div class="col-md-8 col-lg-9">
-                        <input type="text" class="form-control" id="Country" th:value="${session.sessGenderUsr}" readonly>
+                        <input type="text" class="form-control" id="ifmmGender" name="ifmmGender" th:value="${session.sessGenderUsr}" readonly>
                       </div>
                     </div>
 
                     <div class="row mb-3">
                       <label for="Address" class="col-md-4 col-lg-3 col-form-label">전화번호</label>
                       <div class="col-md-8 col-lg-9">
-                        <input type="text" class="form-control" id="Address" th:value="${session.sessPhoneUsr}">
+                        <input type="text" class="form-control" id="ifmmPhone" name="ifmmPhone" th:value="${session.sessPhoneUsr}">
+                        <div id="ifmmPhoneError" class="text-danger" style="display: none;"></div>
                       </div>
                     </div>
 
                     <div class="row mb-3">
                       <label for="Phone" class="col-md-4 col-lg-3 col-form-label">이메일</label>
                       <div class="col-md-8 col-lg-9">
-                        <input type="text" class="form-control" id="Phone" th:value="${session.sessEmailUsr}">
+                        <input type="text" class="form-control" id="ifmmEmail" name="ifmmEmail" th:value="${session.sessEmailUsr}">
+                        <div id="ifmmEmailError" class="text-danger" style="display: none;"></div>
                       </div>
                     </div>
 
                     <div class="text-center">
-                      <button type="submit" class="btn btn-primary">확인</button>
+                      <button type="button" id="btnUpdate" class="btn btn-primary">확인</button>
                     </div>
                   </form><!-- End Profile Edit Form -->
 
@@ -184,31 +191,39 @@
 
                 <div class="tab-pane fade pt-3" id="profile-change-password">
                   <!-- Change Password Form -->
-                  <form>
-
-                    <div class="row mb-3">
-                      <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">현재 비밀번호</label>
-                      <div class="col-md-8 col-lg-9">
-                        <input name="password" type="password" class="form-control" id="currentPassword">
-                      </div>
-                    </div>
-
+                  <form id="formPw" name="formPw" action="/v1/infra/member/profileUsrPdt">
+<!--                     <div class="row mb-3"> -->
+<!--                       <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">현재 비밀번호</label> -->
+<!--                       <div class="col-md-8 col-lg-9"> -->
+<!--                         <input name="password" type="password" class="form-control" id="currentPassword"> -->
+<!--                       </div> -->
+<!--                     </div> -->
+<input type="hidden" id="ifmmSeq" name="ifmmSeq" th:value="${session.sessSeqUsr}">
+<input type="hidden" id="ifmmName" name="ifmmName" th:value="${session.sessNameUsr}">
+<input type="hidden" id="ifmmNickName" name="ifmmNickName" th:value="${session.sessNickNameUsr}">
+<input type="hidden" id="ifmmId" name="ifmmId" th:value="${session.sessIdUsr}">
+<input type="hidden" id="ifmmBirth" name="ifmmBirth" th:value="${session.sessBirthUsr}">
+<input type="hidden" id="ifmmGender" name="ifmmGender" th:value="${session.sessGenderUsr}">
+<input type="hidden" id="ifmmPhone" name="ifmmPhone" th:value="${session.sessPhoneUsr}">
+<input type="hidden" id="ifmmEmail" name="ifmmEmail" th:value="${session.sessEmailUsr}">
                     <div class="row mb-3">
                       <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">변경 비밀번호</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="newpassword" type="password" class="form-control" id="newPassword">
+                        <input type="text" name="ifmmPassword" class="form-control" id="ifmmPassword" required autocomplete="off">
+                        <div id="ifmmPasswordError" class="text-danger" style="display: none;"></div>
                       </div>
                     </div>
 
                     <div class="row mb-3">
                       <label for="renewPassword" class="col-md-4 col-lg-3 col-form-label">변경 비밀번호 확인</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="renewpassword" type="password" class="form-control" id="renewPassword">
+                        <input name="ifmmPassword2" type="password" class="form-control" id="ifmmPassword2">
+                        <div id="ifmmPassword2Error" class="text-danger" style="display: none;"></div>
                       </div>
                     </div>
 
                     <div class="text-center">
-                      <button type="submit" class="btn btn-primary">비밀번호 변경</button>
+                      <button type="button" id="btnUpdatePw" class="btn btn-primary">비밀번호 변경</button>
                     </div>
                   </form><!-- End Change Password Form -->
 
@@ -263,7 +278,141 @@
 				});
 			}
   </script>
+  
+  <script>
+  	document.getElementById("btnUpdate").onclick = function(){
+  		
+  		const ifmmNickName = document.getElementById("ifmmNickName");
+		const ifmmNickNameValue = document.getElementById("ifmmNickName").value.trim();
+		const ifmmNickNameError = document.getElementById("ifmmNickNameError");
 
+		var ifmmNickNameRegExp = /^[가-힣a-zA-Z]{1,10}$/;
+		if (!ifmmNickNameRegExp.test(ifmmNickNameValue)) {
+			ifmmNickNameError.innerText = "한글과 영어만 입력할 수 있으며, 최대 10글자까지 작성 가능합니다.";
+			ifmmNickNameError.style.display = "";
+			ifmmNickName.classList.add("is-invalid");
+			ifmmNickName.classList.remove("is-valid");
+			ifmmNickName.focus();
+			return false;
+		} else {
+			ifmmNickNameError.style.display = "none";
+			ifmmNickName.classList.remove("is-invalid");
+			ifmmNickName.classList.add("is-valid");
+		}
+  		
+		const ifmmBirth = document.getElementById("ifmmBirth");
+		const ifmmBirthValue = document.getElementById("ifmmBirth").value.trim();
+		const ifmmBirthError = document.getElementById("ifmmBirthError");
+
+		var ifmmBirthRegExp = /^(19|20)\d{2}(0[1-9]|1[0-2])(0[1-9]|[12]\d|3[01])$/;
+		if (!ifmmBirthRegExp.test(ifmmBirthValue)) {
+			ifmmBirthError.innerText = "생년월일을 올바른 형식으로 입력해주세요. 예)'19900101'";
+			ifmmBirthError.style.display = "";
+			ifmmBirth.classList.add("is-invalid");
+			ifmmBirth.classList.remove("is-valid");
+			ifmmBirth.focus();
+			return false;
+		} else {
+			ifmmBirthError.style.display = "none";
+			ifmmBirth.classList.remove("is-invalid");
+			ifmmBirth.classList.add("is-valid");
+		}
+		
+		const ifmmPhone = document.getElementById("ifmmPhone");
+		const ifmmPhoneValue = document.getElementById("ifmmPhone").value.trim();
+		const ifmmPhoneError = document.getElementById("ifmmPhoneError");
+
+		var ifmmPhoneRegExp = /^01[016789]\d{7,8}$/;
+		if (!ifmmPhoneRegExp.test(ifmmPhoneValue)) {
+			ifmmPhoneError.innerText = "휴대폰 번호는 하이픈(-) 없이 입력해주세요.";
+			ifmmPhoneError.style.display = "";
+			ifmmPhone.classList.add("is-invalid");
+			ifmmPhone.classList.remove("is-valid");
+			ifmmPhone.focus();
+			return false;
+		} else {
+			ifmmPhoneError.style.display = "none";
+			ifmmPhone.classList.remove("is-invalid");
+			ifmmPhone.classList.add("is-valid");
+		}
+		
+		const ifmmEmail = document.getElementById("ifmmEmail");
+		const ifmmEmailValue = document.getElementById("ifmmEmail").value.trim();
+		const ifmmEmailError = document.getElementById("ifmmEmailError");
+
+		var ifmmEmailRegExp = /^[a-z0-9\.\-_]+@([a-z0-9\-]+\.)+[a-z]{2,6}$/;
+		if (!ifmmEmailRegExp.test(ifmmEmailValue)) {
+			ifmmEmailError.innerText = "이메일을 올바르게 입력해 주세요.";
+			ifmmEmailError.style.display = "";
+			ifmmEmail.classList.add("is-invalid");
+			ifmmEmail.classList.remove("is-valid");
+			ifmmEmail.focus();
+			return false;
+		} else {
+			ifmmEmailError.style.display = "none";
+			ifmmEmail.classList.remove("is-invalid");
+			ifmmEmail.classList.add("is-valid");
+		}
+		
+  		let form = document.querySelector("form[name=form]");
+		form.action = "/v1/infra/member/profileUsrPdt";
+  		form.submit();
+  	}
+  </script>
+  <script>
+	document.getElementById("btnUpdatePw").onclick = function(){
+		
+		const ifmmPassword = document.getElementById("ifmmPassword");
+		const ifmmPasswordValue = document.getElementById("ifmmPassword").value.trim();
+		const ifmmPasswordError = document.getElementById("ifmmPasswordError");
+
+		var ifmmPasswordRegExp = /^[a-zA-Z][0-9a-zA-Z]{7,11}$/;
+		if (!ifmmPasswordRegExp.test(ifmmPasswordValue)) {
+			ifmmPasswordError.innerText = "영문,숫자 포함 8~12자 이내에 입력해 주세요.";
+			ifmmPasswordError.style.display = "";
+			ifmmPassword.classList.add("is-invalid");
+			ifmmPassword.classList.remove("is-valid");
+			ifmmPassword.focus();
+			return false;
+		} else {
+			ifmmPasswordError.style.display = "none";
+			ifmmPassword.classList.remove("is-invalid");
+			ifmmPassword.classList.add("is-valid");
+		}
+
+		const ifmmPassword2 = document.getElementById("ifmmPassword2");
+		const ifmmPassword2Value = document.getElementById("ifmmPassword2").value.trim();
+		const ifmmPassword2Error = document.getElementById("ifmmPassword2Error");
+
+		var ifmmPassword2RegExp = /^[a-zA-Z][0-9a-zA-Z]{7,11}$/;
+		if (!ifmmPassword2RegExp.test(ifmmPassword2Value)) {
+			ifmmPassword2Error.innerText = "영문,숫자 포함 8~12자 이내에 입력해 주세요.";
+			ifmmPassword2Error.style.display = "";
+			ifmmPassword2.classList.add("is-invalid");
+			ifmmPassword2.classList.remove("is-valid");
+			ifmmPassword2.focus();
+			return false;
+		} else {
+			ifmmPassword2Error.style.display = "none";
+			ifmmPassword2.classList.remove("is-invalid");
+			ifmmPassword2.classList.add("is-valid");
+		}
+		if (ifmmPasswordValue !== ifmmPassword2Value) {
+			ifmmPassword2Error.innerText = "비밀번호가 일치하지 않습니다.";
+			ifmmPassword2Error.style.display = "";
+			ifmmPassword2.classList.add("is-invalid");
+			ifmmPassword2.classList.remove("is-valid");
+			ifmmPassword2.focus();
+			return false;
+		} else {
+			//by pass
+		}
+		
+		let form = document.querySelector("form[name=formPw]");
+		form.action = "/v1/infra/member/profileUsrPdt";
+		form.submit();
+	}
+  </script>  
 </body>
 
 </html>

@@ -46,6 +46,12 @@ public class DreamsController {
 		dreamsService.insert(dto);
 		return "redirect:/v1/infra/dreams/dreamsUsrView";
 	}
+	
+	@RequestMapping(value="/v1/infra/dreams/dreamsUsrUpdt")
+	public String dreamsUsrUpdt(DreamsDto dto) {
+		dreamsService.update(dto);
+		return "redirect:/v1/infra/dreams/dreamsUsrView";
+	}
 
 	@RequestMapping(value = "/v1/infra/dreams/dreamsUsrForm", method = RequestMethod.GET)
     public String dreamsUsrForm(HttpSession session, Model model) {

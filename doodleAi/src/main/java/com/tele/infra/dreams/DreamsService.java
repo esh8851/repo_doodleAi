@@ -33,6 +33,10 @@ public class DreamsService {
 	public int insert(DreamsDto dto) {
 		return dao.insert(dto);
 	}
+	
+	public int update(DreamsDto dto) {
+		return dao.update(dto);
+	}
 
 	private static final String OPENAI_API_URL = "https://api.openai.com/v1/chat/completions";
 

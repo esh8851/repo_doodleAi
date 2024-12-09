@@ -13,4 +13,6 @@ public interface DreamsDao {
 	
 	public int insert(DreamsDto dto);
 	
+	public int update(DreamsDto dto);
+	
 }

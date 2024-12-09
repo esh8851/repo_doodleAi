@@ -15,9 +15,14 @@ public class QnaController {
 	
 	@RequestMapping(value="/v1/infra/qna/qnaUsrList")
 	public String qnaUsrList(Model model,@ModelAttribute("vo") QnaVo qnaVo) {
+//		qnaVo.setParamsPaging(qnaService.selectOneCount(qnaVo));
+////		if (qnaVo.getTotalRows() > 0) {
+//			model.addAttribute("list", qnaService.selectList(qnaVo));
+////		}
+		qnaVo.setParamsPaging(qnaService.selectOneCount(qnaVo));
 		List<QnaDto> qnas = qnaService.selectList(qnaVo);
 		model.addAttribute("list", qnas);
-		qnaVo.setParamsPaging(qnaService.selectOneCount(qnaVo));
+		
 		return "usr/v1/infra/qna/qnaUsrList";
 	}
 

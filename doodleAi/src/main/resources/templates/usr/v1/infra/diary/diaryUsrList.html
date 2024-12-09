@@ -78,30 +78,30 @@
 	<script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.6/dayjs.min.js"></script>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<!-- jQuery 라이브러리 추가 -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-  <script>
+  	<script>
 	document.getElementById("btnLogout").onclick = function(){
-				$.ajax({
-					async: true 
-					,cache: false
-					,type: "post"
-					,url: "/signoutUsrProc"
-					,success: function(response) {
-								location.href = "/v1/infra/member/signinUsrForm";
-					}
-					,error : function(jqXHR, textStatus, errorThrown){
-						alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
-					}
-				});
+		$.ajax({
+			async: true 
+			,cache: false
+			,type: "post"
+			,url: "/signoutUsrProc"
+			,success: function(response) {
+						location.href = "/v1/infra/member/signinUsrForm";
 			}
-  </script>
+			,error : function(jqXHR, textStatus, errorThrown){
+				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+			}
+		});
+	}
+  	</script>
 	<script type="text/javascript">
 	document.addEventListener('DOMContentLoaded', function() {
 	    var calendarEl = document.getElementById('calendar');
 	    
 	    $.ajax({
-			async: true 
+			async: true
 			,cache: false
 			,type: "post"
 			,url: "/v1/infra/diary/diaryUsrProc"
@@ -109,10 +109,12 @@
 				if(response.rt == "success") {
 					var events = response.list.map(function(diary) {
 						var date = new Date(diary.ifdrDateTime);
-						var formattedDate = date.toISOString().split('T')[0];
+						var localDate = new Date(date.getTime() - date.getTimezoneOffset() * 60000);
+						var formattedDate = localDate.toISOString().split('T')[0];
 						return {
 							title: diary.ifdrTitle,
 							start: formattedDate,
+							end: formattedDate,
 							ifdrSeq: diary.ifdrSeq
 						};
 					});
@@ -122,6 +124,7 @@
 				    	dayMaxEvents: true,
 				    	initialView: 'dayGridMonth',
 				    	locale: "ko",
+				    	timezone: 'local',
 				    	headerToolbar: {
 				    		right : 'addEventButton',
 				    		center : 'title',
@@ -142,7 +145,7 @@
 			            eventClick: function(info){
 			            	var diarySeq = info.event.extendedProps.ifdrSeq;
 			            	window.location.href = "/v1/infra/diary/diaryUsrMForm?ifdrSeq=" + diarySeq;
-			            }
+			            },
 			        });
 				    calendar.render();
 				} else {

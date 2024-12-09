@@ -42,8 +42,9 @@
 				                </div>
 								
 								<!-- TinyMCE Editor -->
-								<textarea class="tinymce-editor" name="ifdrDesc" id="ifdrDesc"></textarea>
+								<textarea class="tinymce-editor" name="ifdrDescA" id="ifdrDescA"></textarea>
 								<!-- End TinyMCE Editor -->
+								<textarea name="ifdrDesc" id="ifdrDesc" style="display:none;"></textarea>
 
 								<div
 									class="form-check form-switch d-flex justify-content-end mt-3">
@@ -140,13 +141,16 @@
 	        } else {
 	            document.querySelector('input[name="ifdrOpenNy"]').value = "0";
 	        }
-			
+	        
+	        var textAreaA = tinyMCE.get('ifdrDescA').getContent({ format: 'text' });
+	        document.getElementById('ifdrDesc').value = textAreaA;
+	        
 			let form = document.querySelector("[name=form]");
 			form.action = "/v1/infra/diary/diaryUsrInst";
 			form.submit();
 		}
 	</script>
-
+	
 </body>
 
 </html>

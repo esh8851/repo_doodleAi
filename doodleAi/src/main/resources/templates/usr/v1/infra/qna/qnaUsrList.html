@@ -83,7 +83,7 @@
 					                	<tr th:each="list : ${list}">
 					                    	<td th:text="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + listStat.index)}"></td>
 					                    	<td>카테고리</td>
-					                    	<td th:text="${list.ifqnaTitle}"></td>
+					                    	<td><a th:href="@{/v1/infra/qna/qnaUsrMfom(ifqnaSeq=${list.ifqnaSeq})}" th:text="${list.ifqnaTitle}"></a></td>
 					                    	<td th:text="${list.ifmmNickName}"></td>
 					                    	<td th:text="${#dates.format(list.ifqnaDateTime, 'yyyy-MM-dd')}"></td>
 					                  	</tr>

@@ -62,4 +62,30 @@
 		</selectKey>
 	</insert>
 	
+	<update id="update">
+		update qna
+		set
+			ifqnaTitle = #{ifqnaTitle},
+			ifqnaCate = #{ifqnaCate},
+			ifqnaDesc = #{ifqnaDesc},
+			ifqnaDateTimeEdit = now()
+		where 1 = 1
+			and ifqnaSeq = #{ifqnaSeq}
+	</update>
+	
+	<select id = "selectOne" resultMap="resultMapObj">
+		select
+			a.ifqnaSeq
+			,a.ifqnaTitle
+			,a.ifqnaCate
+			,a.ifqnaDesc
+			,a.ifqnaDateTime
+			,a.ifqnaDateTimeEdit
+			,a.member_ifmmSeq
+		from
+			qna a
+		where 1 =1
+			and a.ifqnaSeq = #{ifqnaSeq}
+	</select>
+	
 </mapper>

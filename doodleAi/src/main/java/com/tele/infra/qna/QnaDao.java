@@ -13,4 +13,8 @@ public interface QnaDao {
 	
 	public int selectOneCount(QnaVo qnaVo);
 	
+	public int update(QnaDto qnaDto);
+	
+	public QnaDto selectOne(QnaDto qnaDto);
+	
 }

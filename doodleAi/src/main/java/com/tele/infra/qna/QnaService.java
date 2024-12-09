@@ -23,4 +23,12 @@ public class QnaService {
 		return qnaDao.selectOneCount(qnaVo);
 	}
 	
+	public int update(QnaDto qnaDto) {
+		return qnaDao.update(qnaDto);
+	}
+	
+	public QnaDto selectOne(QnaDto qnaDto) {
+		return qnaDao.selectOne(qnaDto);
+	}
+	
 }

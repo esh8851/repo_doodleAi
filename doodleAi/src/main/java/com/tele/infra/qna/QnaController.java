@@ -37,4 +37,16 @@ public class QnaController {
 		return "redirect:/v1/infra/qna/qnaUsrList";
 	}
 	
+	@RequestMapping(value="/v1/infra/qna/qnaUsrMfom")
+	public String qnaUsrMfom(QnaDto qnaDto,Model model) {
+		model.addAttribute("item",qnaService.selectOne(qnaDto));
+		return "usr/v1/infra/qna/qnaUsrMfom";
+	}
+	
+	@RequestMapping(value="/v1/infra/qna/qnaUsrPdt")
+	public String qnaUsrPdt(QnaDto qnaDto) {
+		qnaService.update(qnaDto);
+		return "redirect:/v1/infra/qna/qnaUsrList";
+	}
+	
 }

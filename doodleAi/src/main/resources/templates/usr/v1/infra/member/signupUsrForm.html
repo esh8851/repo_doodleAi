@@ -169,9 +169,9 @@
 		const ifmmNickNameValue = document.getElementById("ifmmNickName").value.trim();
 		const ifmmNickNameError = document.getElementById("ifmmNickNameError");
 
-		var ifmmNickNameRegExp = /^[가-힣a-zA-Z]{1,10}$/;
+		var ifmmNickNameRegExp = /^[가-힣a-zA-Z]{1,6}$/;
 		if (!ifmmNickNameRegExp.test(ifmmNickNameValue)) {
-			ifmmNickNameError.innerText = "한글과 영어만 입력할 수 있으며, 최대 10글자까지 작성 가능합니다.";
+			ifmmNickNameError.innerText = "한글과 영어만 입력할 수 있으며, 최대 6글자까지 작성 가능합니다.";
 			ifmmNickNameError.style.display = "";
 			ifmmNickName.classList.add("is-invalid");
 			ifmmNickName.classList.remove("is-valid");

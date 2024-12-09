@@ -11,8 +11,9 @@ public class Constants {
 	public static final String URL_LOGINFORMUSR = "/v1/infra/member/signinUsrForm";
 	
 	//페이징
-	public static final int ROW_NUM_TO_SHOW = 10;
-	public static final int PAGE_NUM_TO_SHOW = 10;
+	public static final int ROW_NUM_TO_SHOW = 10
+			;
+	public static final int PAGE_NUM_TO_SHOW = 5;
 	
 	//date format
 	public static final String DATETIME_FORMAT_BASIC = "yyyy-MM-dd HH:mm:ss";

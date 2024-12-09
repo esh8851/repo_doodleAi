@@ -37,12 +37,12 @@
               <img src="/usr/v1/template/NiceAdmin-1.0.0/assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
               <h2 th:text="${session.sessNickNameUsr}"></h2>
               <h3 th:text="${session.sessNameUsr}"></h3>
-              <div class="social-links mt-2">
-                <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-                <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-                <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-                <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
-              </div>
+<!--               <div class="social-links mt-2"> -->
+<!--                 <a href="#" class="twitter"><i class="bi bi-twitter"></i></a> -->
+<!--                 <a href="#" class="facebook"><i class="bi bi-facebook"></i></a> -->
+<!--                 <a href="#" class="instagram"><i class="bi bi-instagram"></i></a> -->
+<!--                 <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a> -->
+<!--               </div> -->
             </div>
           </div>
 
@@ -192,12 +192,6 @@
                 <div class="tab-pane fade pt-3" id="profile-change-password">
                   <!-- Change Password Form -->
                   <form id="formPw" name="formPw" action="/v1/infra/member/profileUsrPdt">
-<!--                     <div class="row mb-3"> -->
-<!--                       <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">현재 비밀번호</label> -->
-<!--                       <div class="col-md-8 col-lg-9"> -->
-<!--                         <input name="password" type="password" class="form-control" id="currentPassword"> -->
-<!--                       </div> -->
-<!--                     </div> -->
 <input type="hidden" id="ifmmSeq" name="ifmmSeq" th:value="${session.sessSeqUsr}">
 <input type="hidden" id="ifmmName" name="ifmmName" th:value="${session.sessNameUsr}">
 <input type="hidden" id="ifmmNickName" name="ifmmNickName" th:value="${session.sessNickNameUsr}">
@@ -206,21 +200,22 @@
 <input type="hidden" id="ifmmGender" name="ifmmGender" th:value="${session.sessGenderUsr}">
 <input type="hidden" id="ifmmPhone" name="ifmmPhone" th:value="${session.sessPhoneUsr}">
 <input type="hidden" id="ifmmEmail" name="ifmmEmail" th:value="${session.sessEmailUsr}">
+                    
                     <div class="row mb-3">
-                      <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">변경 비밀번호</label>
-                      <div class="col-md-8 col-lg-9">
-                        <input type="text" name="ifmmPassword" class="form-control" id="ifmmPassword" required autocomplete="off">
-                        <div id="ifmmPasswordError" class="text-danger" style="display: none;"></div>
-                      </div>
-                    </div>
+  <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">변경 비밀번호</label>
+  <div class="col-md-8 col-lg-9">
+    <input name="ifmmPassword" type="password" class="form-control" id="ifmmPassword1">
+    <div id="ifmmPasswordError" class="text-danger" style="display: none;"></div>
+  </div>
+</div>
 
-                    <div class="row mb-3">
-                      <label for="renewPassword" class="col-md-4 col-lg-3 col-form-label">변경 비밀번호 확인</label>
-                      <div class="col-md-8 col-lg-9">
-                        <input name="ifmmPassword2" type="password" class="form-control" id="ifmmPassword2">
-                        <div id="ifmmPassword2Error" class="text-danger" style="display: none;"></div>
-                      </div>
-                    </div>
+<div class="row mb-3">
+  <label for="renewPassword" class="col-md-4 col-lg-3 col-form-label">변경 비밀번호 확인</label>
+  <div class="col-md-8 col-lg-9">
+    <input name="ifmmPassword2" type="password" class="form-control" id="ifmmPassword2">
+    <div id="ifmmPassword2Error" class="text-danger" style="display: none;"></div>
+  </div>
+</div>
 
                     <div class="text-center">
                       <button type="button" id="btnUpdatePw" class="btn btn-primary">비밀번호 변경</button>
@@ -362,13 +357,13 @@
   <script>
 	document.getElementById("btnUpdatePw").onclick = function(){
 		
-		const ifmmPassword = document.getElementById("ifmmPassword");
-		const ifmmPasswordValue = document.getElementById("ifmmPassword").value.trim();
+		const ifmmPassword = document.getElementById("ifmmPassword1");
+		const ifmmPasswordValue = ifmmPassword.value.trim();
 		const ifmmPasswordError = document.getElementById("ifmmPasswordError");
 
 		var ifmmPasswordRegExp = /^[a-zA-Z][0-9a-zA-Z]{7,11}$/;
 		if (!ifmmPasswordRegExp.test(ifmmPasswordValue)) {
-			ifmmPasswordError.innerText = "영문,숫자 포함 8~12자 이내에 입력해 주세요.";
+			ifmmPasswordError.innerText = "영문, 숫자 포함 8~12자 이내에 입력해 주세요.";
 			ifmmPasswordError.style.display = "";
 			ifmmPassword.classList.add("is-invalid");
 			ifmmPassword.classList.remove("is-valid");
@@ -381,12 +376,12 @@
 		}
 
 		const ifmmPassword2 = document.getElementById("ifmmPassword2");
-		const ifmmPassword2Value = document.getElementById("ifmmPassword2").value.trim();
+		const ifmmPassword2Value = ifmmPassword2.value.trim();
 		const ifmmPassword2Error = document.getElementById("ifmmPassword2Error");
 
 		var ifmmPassword2RegExp = /^[a-zA-Z][0-9a-zA-Z]{7,11}$/;
 		if (!ifmmPassword2RegExp.test(ifmmPassword2Value)) {
-			ifmmPassword2Error.innerText = "영문,숫자 포함 8~12자 이내에 입력해 주세요.";
+			ifmmPassword2Error.innerText = "영문, 숫자 포함 8~12자 이내에 입력해 주세요.";
 			ifmmPassword2Error.style.display = "";
 			ifmmPassword2.classList.add("is-invalid");
 			ifmmPassword2.classList.remove("is-valid");
@@ -397,6 +392,7 @@
 			ifmmPassword2.classList.remove("is-invalid");
 			ifmmPassword2.classList.add("is-valid");
 		}
+
 		if (ifmmPasswordValue !== ifmmPassword2Value) {
 			ifmmPassword2Error.innerText = "비밀번호가 일치하지 않습니다.";
 			ifmmPassword2Error.style.display = "";
@@ -404,15 +400,14 @@
 			ifmmPassword2.classList.remove("is-valid");
 			ifmmPassword2.focus();
 			return false;
-		} else {
-			//by pass
 		}
-		
+
 		let form = document.querySelector("form[name=formPw]");
 		form.action = "/v1/infra/member/profileUsrPdt";
 		form.submit();
 	}
-  </script>  
+</script>
+ 
 </body>
 
 </html>

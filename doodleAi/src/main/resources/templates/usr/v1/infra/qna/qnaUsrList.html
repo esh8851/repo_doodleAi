@@ -33,7 +33,7 @@
 					<div class="col-12">
 						<div class="card" style="position: relative; background-image: url('/usr/v1/template/NiceAdmin-1.0.0/assets/img/8.jpg'); background-size: contain; background-position: center; color: white; min-height: 300px;">
 				        	<div class="card-body">
-				        	<form method="post" action="/v1/infra/qna/qnaUsrList" name="formList">
+				        	<form method="post" action="/v1/infra/qna/qnaUsrList" name="formList" id="formList">
 					        	<input type="hidden" name="thisPage" th:value="${vo.thisPage}" default="1"/>
 								<input type="hidden" id="rowNumToShow" name="rowNumToShow" th:value="${vo.rowNumToShow}"/>
 					            <h1 style="color:black; margin-left: 530px; margin-top:30px; margin-bottom:20px;">질문 게시판</h1>
@@ -63,8 +63,8 @@
                                                 	<span style="float: right;">
                                                     	<select class="form-select" aria-label="Default select example"
                                                         	style="width: 150px;" id="changeRowNum" name="changeRowNum" >
-                                                        	<option value="10" th:selected="${vo.rowNumToShow eq 10}">10</option>
-                                                            <option value="15" th:selected="${vo.rowNumToShow eq 15}">15</option>
+                                                        	<option value="5" th:selected="${vo.rowNumToShow eq 5}">5</option>
+                                                            <option value="10" th:selected="${vo.rowNumToShow eq 10}">10</option>
                                                             <option value="20" th:selected="${vo.rowNumToShow eq 20}">20</option>
                                                             <option value="25" th:selected="${vo.rowNumToShow eq 25}">25</option>
                                                         </select>
@@ -160,13 +160,12 @@
   	}
   </script>
   <script>
-  goList = function(thisPage) {
-	    console.log("goList called with thisPage:", thisPage);
-	    
+  goList = function (thisPage) {
 	    document.querySelector("input[name=thisPage]").value = thisPage;
 	    document.querySelector("form[name=formList]").action = "/v1/infra/qna/qnaUsrList";
 	    document.querySelector("form[name=formList]").submit();
 	}
+	//데이터 행
 	document.getElementById("changeRowNum").onchange = function () {
 	    document.getElementById("rowNumToShow").value = document.getElementById("changeRowNum").value;
 	    formList.action = "/v1/infra/qna/qnaUsrList";

@@ -25,7 +25,7 @@
 		left join
 			member b on b.ifmmSeq = a.member_ifmmSeq 
 		where 1=1
-			and a.ifdrOpenNy = 0
+			and a.ifdrOpenNy = 1
 	</select>
 	
 	<select id="selectOne" resultMap="resultMapObj">

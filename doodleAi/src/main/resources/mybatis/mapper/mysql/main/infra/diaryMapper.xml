@@ -58,4 +58,17 @@
 		)
 	</insert>
 	
+	<update id="update">
+		UPDATE diary
+			SET
+				ifdrTitle = #{ifdrTitle}
+				,ifdrDesc = #{ifdrDesc}
+				,ifdrDateTimeEdit = now()
+				,ifdrDelNy = 0
+				,ifdrOpenNy = #{ifdrOpenNy}
+				,member_ifmmSeq = #{member_ifmmSeq}
+		WHERE 1 = 1
+			AND ifdrSeq = #{ifdrSeq} 
+	</update>
+	
 </mapper>

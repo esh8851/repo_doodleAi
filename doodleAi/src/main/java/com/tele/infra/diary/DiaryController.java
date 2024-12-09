@@ -47,5 +47,11 @@ public class DiaryController {
 		returnMap.put("rt", "success");
 		return returnMap;
 	}
+	
+	@RequestMapping(value="/v1/infra/diary/diaryUsrUpdt")
+	public String diaryUsrUpdt(DiaryDto diaryDto) {
+		diaryService.update(diaryDto);
+		return "redirect:/v1/infra/diary/diaryUsrList";
+	}
 
 }

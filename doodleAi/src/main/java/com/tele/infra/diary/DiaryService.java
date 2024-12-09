@@ -22,5 +22,9 @@ public class DiaryService {
 	public int insert(DiaryDto diaryDto) {
 		return diaryDao.insert(diaryDto);
 	}
+	
+	public int update(DiaryDto diaryDto) {
+		return diaryDao.update(diaryDto);
+	}
 
 }

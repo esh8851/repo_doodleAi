@@ -27,7 +27,7 @@
 		<!-- End Page Title -->
 
 		<section class="section dashboard">
-			<form name="form" method="post" action="/v1/infra/diary/diaryUsrForm">
+			<form name="form" method="post" action="/v1/infra/diary/diaryUsrMForm">
 				<div class="row">
 					<div class="col-12">
 						<div class="card">
@@ -37,28 +37,33 @@
 								<div class="row mb-3">
 				                  <label for="ifdrTitle" class="col-sm-1 col-form-label">일기 제목</label>
 				                  <div class="col-sm-3">
-				                    <input type="text" class="form-control" name="ifdrTitle" id="ifdrTitle" th:value="${item.ifdrTitle}" readonly>
+				                    <input type="text" class="form-control" name="ifdrTitle" id="ifdrTitle" th:value="${item.ifdrTitle}">
 				                  </div>
 				                </div>
 								
 								<!-- TinyMCE Editor -->
-								<textarea class="tinymce-editor" name="ifdrDesc" id="ifdrDesc" th:text="${item.ifdrDesc}"></textarea>
+								<textarea class="tinymce-editor" name="ifdrDescA" id="ifdrDescA" th:text="${item.ifdrDesc}"></textarea>
 								<!-- End TinyMCE Editor -->
+								<textarea name="ifdrDesc" id="ifdrDesc" style="display:none;"></textarea>
 
 								<div
 									class="form-check form-switch d-flex justify-content-end mt-3">
 									<input class="form-check-input" type="checkbox"
-										id="flexSwitchCheckChecked" th:checked="${item.ifdrOpenNy == 1}"> <label
+										id="ifdrOpenNy" th:checked="${item.ifdrOpenNy == 1}"> <label
 										class="form-check-label ms-1" for="flexSwitchCheckChecked">일기
 										공개</label>
 								</div>
+								
+								<input type="hidden" name="ifdrSeq" id="ifdrSeq" th:value="${item.ifdrSeq}" />
+								<input type="hidden" name="member_ifmmSeq" id="member_ifmmSeq" th:value="${session.sessSeqUsr}"/>
+								<input type="hidden" name="ifdrOpenNy" value="0">
 
 								<div class="d-flex justify-content-between mt-3">
 									<button type="button" class="btn btn-lg btn-outline-primary"
 										id="btnList">
 										<i class="bi bi-list-task"></i>
 									</button>
-									<button type="submit" class="btn btn-lg btn-primary">
+									<button type="button" class="btn btn-lg btn-primary" id="btnSubmit">
 										<i class="bi bi-pencil"></i>
 									</button>
 								</div>
@@ -154,6 +159,25 @@
 	        $('#diaryOpenNy').text(ifdrOpenNy);
 	        $('#memberSeq').text(member_ifmmSeq);
 	    });
+	</script>
+	
+	<script type="text/javascript">
+		document.getElementById("btnSubmit").onclick = function() {
+			
+			var checkbox = document.getElementById('ifdrOpenNy');
+	        if (checkbox.checked) {
+	            document.querySelector('input[name="ifdrOpenNy"]').value = "1";
+	        } else {
+	            document.querySelector('input[name="ifdrOpenNy"]').value = "0";
+	        }
+			
+			var textAreaA = tinyMCE.get('ifdrDescA').getContent({ format: 'text' });
+	        document.getElementById('ifdrDesc').value = textAreaA;
+			
+			let form = document.querySelector("[name=form]");
+			form.action = "/v1/infra/diary/diaryUsrUpdt";
+			form.submit();
+		}
 	</script>
 	
 </body>

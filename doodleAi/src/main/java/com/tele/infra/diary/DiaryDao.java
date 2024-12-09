@@ -12,5 +12,7 @@ public interface DiaryDao {
 	public DiaryDto selectOne(DiaryDto diaryDto);
 	
 	public int insert(DiaryDto diaryDto);
+	
+	public int update(DiaryDto diaryDto);
 
 }
